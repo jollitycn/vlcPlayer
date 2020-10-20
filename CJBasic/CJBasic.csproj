@@ -1,0 +1,483 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build">
+  <PropertyGroup>
+    <ProjectType>local</ProjectType>
+    <ProjectVersion>7.10.377</ProjectVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{414E1D01-F1BD-4F9C-A00D-10549EE5DB68}</ProjectGuid>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <AssemblyName>CJBasic</AssemblyName>
+    <OutputType>Library</OutputType>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <RootNamespace>CJBasic</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Serialization.Formatters.Soap" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Management" />
+    <Compile Include="AssemblyInfo.cs" />
+    <Compile Include="Global.cs" />
+    <Compile Include="CJBasic\Widget\YearMonthPicker.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CJBasic\Widget\ThumbnailListBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CJBasic\Widget\ThumbnailData.cs" />
+    <Compile Include="CJBasic\Widget\SystemIconShell.cs" />
+    <Compile Include="CJBasic\Threading\Timers\RichTimer\ITimerConfigure.cs" />
+    <Compile Include="CJBasic\Widget\RichTimerConfigure.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CJBasic\Widget\TrayForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CJBasic\Widget\EnumComboBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CJBasic\Widget\Internals\STATDATA.cs" />
+    <Compile Include="CJBasic\Widget\Internals\IStorage.cs" />
+    <Compile Include="CJBasic\Widget\Internals\ISequentialStream.cs" />
+    <Compile Include="CJBasic\Widget\Internals\CHARRANGE.cs" />
+    <Compile Include="CJBasic\Widget\GifBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CJBasic\Threading\Engines\ICycleEngine.cs" />
+    <Compile Include="CJBasic\ObjectManagement\Trees\Multiple\IMultiTree!1.cs" />
+    <Compile Include="CJBasic\ObjectManagement\Trees\Multiple\IAgileMultiTree!1.cs" />
+    <Compile Include="CJBasic\ObjectManagement\Trees\Binary\IBinaryTree!1.cs" />
+    <Compile Include="CJBasic\ObjectManagement\Trees\Binary\CompleteBinaryTree!1.cs" />
+    <Compile Include="CJBasic\ObjectManagement\Pool\IObjectPool!1.cs" />
+    <Compile Include="CJBasic\ObjectManagement\Pool\ObjectPool!1.cs" />
+    <Compile Include="CJBasic\ObjectManagement\Cache\CircleCache!1.cs" />
+    <Compile Include="CJBasic\Helpers\TypeHelper.cs" />
+    <Compile Include="CJBasic\Helpers\SerializeHelper.cs" />
+    <Compile Include="CJBasic\Emit\DynamicProxy\IAopInterceptor.cs" />
+    <Compile Include="CJBasic\ObjectManagement\Pool\IPooledObjectCreator!1.cs" />
+    <Compile Include="CJBasic\Emit\DynamicProxy\MethodTimeInterceptor.cs" />
+    <Compile Include="CJBasic\Emit\DynamicProxy\IArounder.cs" />
+    <Compile Include="CJBasic\Emit\DynamicProxy\TimeLogArounder.cs" />
+    <Compile Include="CJBasic\ShortTime.cs" />
+    <Compile Include="CJBasic\RemotingServiceAddress.cs" />
+    <Compile Include="CJBasic\Widget\Internals\IStream.cs" />
+    <Compile Include="CJBasic\Threading\Engines\IEngineTacheUtil.cs" />
+    <Compile Include="CJBasic\ObjectManagement\Trees\Binary\IHeap!1.cs" />
+    <Compile Include="CJBasic\ObjectManagement\Trees\Binary\Heap!1.cs" />
+    <Compile Include="CJBasic\ObjectManagement\TopNOrderedContainer!1.cs" />
+    <Compile Include="CJBasic\ObjectManagement\IOrdered!1.cs" />
+    <Compile Include="CJBasic\Serialization\SpringFox.cs" />
+    <Compile Include="CJBasic\Serialization\NonXmlAttribute.cs" />
+    <Compile Include="CJBasic\Serialization\ISimpleList.cs" />
+    <Compile Include="CJBasic\Helpers\FileHelper.cs" />
+    <Compile Include="CJBasic\ObjectManagement\LatestObjectCache!1.cs" />
+    <Compile Include="CJBasic\Loggers\ErrorLevel.cs" />
+    <Compile Include="CJBasic\Geometry\LineSegment.cs" />
+    <Compile Include="CJBasic\Loggers\IExceptionLogger.cs" />
+    <Compile Include="CJBasic\Loggers\ExceptionFileLogger.cs" />
+    <Compile Include="CJBasic\Collections\SortedArray2!1.cs" />
+    <Compile Include="CJBasic\Collections\SortedArray!1.cs" />
+    <Compile Include="CJBasic\IUrgentExceptionReporter.cs" />
+    <Compile Include="CJBasic\EmptyUrgentExceptionReporter.cs" />
+    <Compile Include="CJBasic\Widget\Internals\GETCLIPBOARDDATAFLAGS.cs" />
+    <Compile Include="CJBasic\Threading\Timers\TimingTask.cs" />
+    <Compile Include="CJBasic\Threading\Timers\ITimingTaskExcuter.cs" />
+    <Compile Include="CJBasic\Threading\Engines\ISequentialEngine.cs" />
+    <Compile Include="CJBasic\Threading\Engines\SequentialEngine.cs" />
+    <Compile Include="CJBasic\Security\SecurityHelper.cs" />
+    <Compile Include="CJBasic\ObjectManagement\IObjectRetriever!2.cs" />
+    <Compile Include="CJBasic\ObjectManagement\Trees\Multiple\IAgileNodePicker!1.cs" />
+    <Compile Include="CJBasic\ObjectManagement\Managers\IGroupingObjectManager!3.cs" />
+    <Compile Include="CJBasic\Geometry\Triangle.cs" />
+    <Compile Include="CJBasic\Arithmetic\Sorting\SortHelper!1.cs" />
+    <Compile Include="CJBasic\Loggers\ISecurityLogger.cs" />
+    <Compile Include="CJBasic\Loggers\SecurityFileLogger.cs" />
+    <Compile Include="CJBasic\Emit\DynamicProxy\EmptyInterceptor.cs" />
+    <Compile Include="CJBasic\Date.cs" />
+    <Compile Include="CJBasic\Widget\Internals\TYMED.cs" />
+    <Compile Include="CJBasic\Threading\Engines\IEngineActor.cs" />
+    <Compile Include="CJBasic\Threading\Engines\BriefWorkerEngine!1.cs" />
+    <Compile Include="CJBasic\ObjectManagement\Managers\IRefreshableCacheManager.cs" />
+    <Compile Include="CJBasic\ObjectManagement\Managers\CbCacheException.cs" />
+    <Compile Include="CJBasic\ObjectManagement\Integration\ICombined!2.cs" />
+    <Compile Include="CJBasic\ObjectManagement\Increasing\IPhaseIncreaseAccesser!4.cs" />
+    <Compile Include="CJBasic\ObjectManagement\Increasing\BasePhaseIncreaseAccesser!3.cs" />
+    <Compile Include="CJBasic\ObjectManagement\MinMaxContainer.cs" />
+    <Compile Include="CJBasic\ObjectManagement\FixedQueue!1.cs" />
+    <Compile Include="CJBasic\Loggers\IAgileLogger.cs" />
+    <Compile Include="CJBasic\Loggers\EmptyAgileLogger.cs" />
+    <Compile Include="CJBasic\Loggers\FileAgileLogger.cs" />
+    <Compile Include="CJBasic\Helpers\RemotingHelper.cs" />
+    <Compile Include="CJBasic\Helpers\UiSafeInvoker.cs" />
+    <Compile Include="CJBasic\Emit\ForEntity\DynamicObjectClassifierFactory.cs" />
+    <Compile Include="CJBasic\Emit\DynamicDispatcher\DynamicDispatcherEmitter.cs" />
+    <Compile Include="CJBasic\Emit\DynamicBridge\IEventBridge.cs" />
+    <Compile Include="CJBasic\CommonJsonModelAnalyzer.cs" />
+    <Compile Include="CJBasic\CommonJsonModel.cs" />
+    <Compile Include="CJBasic\Widget\XDataGridView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CJBasic\Widget\Internals\IOleObject.cs" />
+    <Compile Include="CJBasic\Widget\Internals\DVASPECT.cs" />
+    <Compile Include="CJBasic\Security\ValidationCodeImageCreator.cs" />
+    <Compile Include="CJBasic\ObjectManagement\Trees\KDimension\KDNode!1.cs" />
+    <Compile Include="CJBasic\ObjectManagement\Trees\KDimension\IKDTreeVal.cs" />
+    <Compile Include="CJBasic\ObjectManagement\Trees\Binary\IBinaryTreeDrawer!1.cs" />
+    <Compile Include="CJBasic\ObjectManagement\Trees\Binary\DrawerParas.cs" />
+    <Compile Include="CJBasic\ObjectManagement\Managers\ISamePriorityObjectManager!1.cs" />
+    <Compile Include="CJBasic\ObjectManagement\Managers\SamePriorityObjectManager!1.cs" />
+    <Compile Include="CJBasic\ObjectManagement\Managers\GroupingObjectManager!3.cs" />
+    <Compile Include="CJBasic\ObjectManagement\EmptyObjectRetriever!2.cs" />
+    <Compile Include="CJBasic\Helpers\XmlHelper.cs" />
+    <Compile Include="CJBasic\Helpers\XmlPropertyPosition.cs" />
+    <Compile Include="CJBasic\Helpers\WebServiceHelper.cs" />
+    <Compile Include="CJBasic\Serialization\NotSerializedCompactlyAttribute.cs" />
+    <Compile Include="CJBasic\ObjectManagement\ReorderCache!1.cs" />
+    <Compile Include="CJBasic\Security\DesEncryption.cs" />
+    <Compile Include="CJBasic\Security\DesStrategy.cs" />
+    <Compile Include="CJBasic\Emit\DynamicProxy\InterceptedMethod.cs" />
+    <Compile Include="CJBasic\Emit\ForEntity\DynamicEntityEmitter.cs" />
+    <Compile Include="CJBasic\Widget\Thumbnail.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CJBasic\Widget\DataMergedView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CJBasic\Widget\CaptureScreenForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CJBasic\Widget\Internals\RichEditOle.cs" />
+    <Compile Include="CJBasic\Threading\Application\IHeartBeatChecker.cs" />
+    <Compile Include="CJBasic\Threading\Application\EmptyHeartBeatChecker.cs" />
+    <Compile Include="CJBasic\ObjectManagement\Trees\Binary\DoulbeEndedHeap!1.cs" />
+    <Compile Include="CJBasic\ObjectManagement\Trees\Binary\BinaryTreeDrawer!1.cs" />
+    <Compile Include="CJBasic\ObjectManagement\Integration\Combiner.cs" />
+    <Compile Include="CJBasic\ObjectManagement\Cache\HiberarchyAgileNodePicker!1.cs" />
+    <Compile Include="CJBasic\Arithmetic\Sorting\HeapSorter!1.cs" />
+    <Compile Include="CJBasic\Collections\DispersiveKeyScope.cs" />
+    <Compile Include="CJBasic\Helpers\NullReferenceHelper.cs" />
+    <Compile Include="CJBasic\Helpers\ILGlobals.cs" />
+    <Compile Include="CJBasic\Loggers\IMethodTimeLogger.cs" />
+    <Compile Include="CJBasic\Loggers\EmptyMethodTimeLogger.cs" />
+    <Compile Include="CJBasic\Helpers\ReportsHelper.cs" />
+    <Compile Include="CJBasic\Helpers\IStatisticabled.cs" />
+    <Compile Include="CJBasic\EnumDescription.cs" />
+    <Compile Include="CJBasic\Widget\TimerLabel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CJBasic\Widget\PageControlPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CJBasic\Widget\IPageController.cs" />
+    <Compile Include="CJBasic\Widget\Internals\IEnumSTATSTG.cs" />
+    <Compile Include="CJBasic\Widget\Internals\IEnumOLEVERB.cs" />
+    <Compile Include="CJBasic\Widget\Internals\COMRECT.cs" />
+    <Compile Include="CJBasic\Threading\Timers\TimingTaskType.cs" />
+    <Compile Include="CJBasic\Threading\Timers\RichTimer\ITimerTaskManager.cs" />
+    <Compile Include="CJBasic\Threading\Timers\RichTimer\CbTimerTask.cs" />
+    <Compile Include="CJBasic\Threading\Engines\IEngineTache.cs" />
+    <Compile Include="CJBasic\Threading\Engines\BaseEngineTache.cs" />
+    <Compile Include="CJBasic\Threading\Application\AsynDelayActor.cs" />
+    <Compile Include="CJBasic\ObjectManagement\Trees\KDimension\KDTree!1.cs" />
+    <Compile Include="CJBasic\ObjectManagement\Trees\Binary\Node!1.cs" />
+    <Compile Include="CJBasic\ObjectManagement\Trees\Binary\ISorttedBinaryTree!1.cs" />
+    <Compile Include="CJBasic\ObjectManagement\Trees\Binary\TraverseMode.cs" />
+    <Compile Include="CJBasic\ObjectManagement\Managers\ActionTypeOnAddOverflow.cs" />
+    <Compile Include="CJBasic\ObjectManagement\Managers\PriorityManagerPara.cs" />
+    <Compile Include="CJBasic\ObjectManagement\Managers\IObjectManager!2.cs" />
+    <Compile Include="CJBasic\ObjectManagement\Managers\ObjectManager!2.cs" />
+    <Compile Include="CJBasic\ObjectManagement\Managers\PriorityManager!1.cs" />
+    <Compile Include="CJBasic\ObjectManagement\Increasing\SingleSource.cs" />
+    <Compile Include="CJBasic\Helpers\StringHelper.cs" />
+    <Compile Include="CJBasic\Serialization\SimpleXmlConverter.cs" />
+    <Compile Include="CJBasic\ObjectManagement\SafeList!1.cs" />
+    <Compile Include="CJBasic\Emit\ForEntity\PropertyQuickerEmitter.cs" />
+    <Compile Include="CJBasic\Emit\ForEntity\IObjectContainer!1.cs" />
+    <Compile Include="CJBasic\Emit\ForEntity\IObjectContainerCreator!1.cs" />
+    <Compile Include="CJBasic\MapItem.cs" />
+    <Compile Include="CJBasic\DataBuffer.cs" />
+    <Compile Include="CJBasic\Addins\IAddinManager.cs" />
+    <Compile Include="CJBasic\Addins\IAddin.cs" />
+    <Compile Include="CJBasic\Addins\AddinHelper.cs" />
+    <Compile Include="CJBasic\Widget\ColorChooser.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CJBasic\Widget\FaceEmotionBoard.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CJBasic\Widget\Internals\IEnumFORMATETC.cs" />
+    <Compile Include="CJBasic\Widget\AgileRichTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CJBasic\Threading\Synchronize\LockingObject.cs" />
+    <Compile Include="CJBasic\ObjectManagement\Cache\IHiberarchyCache!1.cs" />
+    <Compile Include="CJBasic\Helpers\TimeHelper.cs" />
+    <Compile Include="CJBasic\Arithmetic\SimpleCrossJoiner!1.cs" />
+    <Compile Include="CJBasic\Arithmetic\CrossJoinPath!1.cs" />
+    <Compile Include="CJBasic\Arithmetic\AStar\AStarRoutePlanner.cs" />
+    <Compile Include="CJBasic\Loggers\MethodTimeFileLogger.cs" />
+    <Compile Include="CJBasic\Helpers\ScreenHelper.cs" />
+    <Compile Include="CJBasic\Helpers\ScreenResolution.cs" />
+    <Compile Include="CJBasic\Helpers\DisplayMode.cs" />
+    <Compile Include="CJBasic\Helpers\DMDO.cs" />
+    <Compile Include="CJBasic\Emit\DynamicDispatcher\DynamicDispatcherFactory.cs" />
+    <Compile Include="CJBasic\Collections\SortedArray2!2.cs" />
+    <Compile Include="CJBasic\Week.cs" />
+    <Compile Include="CJBasic\Widget\Internals\STGM.cs" />
+    <Compile Include="CJBasic\Widget\Internals\NativeMethods.cs" />
+    <Compile Include="CJBasic\Widget\Internals\IEnumSTATDATA.cs" />
+    <Compile Include="CJBasic\Threading\Engines\BaseCycleEngine.cs" />
+    <Compile Include="CJBasic\Threading\Engines\AgileCycleEngine.cs" />
+    <Compile Include="CJBasic\Threading\Application\HeartBeatChecker.cs" />
+    <Compile Include="CJBasic\ObjectManagement\Pool\DefaultPooledObjectCreator!1.cs" />
+    <Compile Include="CJBasic\ObjectManagement\Managers\RefreshableCacheExceptionLogBridge.cs" />
+    <Compile Include="CJBasic\ObjectManagement\Integration\ISegmentContainer!2.cs" />
+    <Compile Include="CJBasic\ObjectManagement\Integration\BaseSegmentContainer!2.cs" />
+    <Compile Include="CJBasic\ObjectManagement\Increasing\IIncreaseAutoRetriever!4.cs" />
+    <Compile Include="CJBasic\ObjectManagement\Increasing\IncreaseAutoRetriever!4.cs" />
+    <Compile Include="CJBasic\ObjectManagement\ICreator!1.cs" />
+    <Compile Include="CJBasic\ObjectManagement\DefaultCreator.cs" />
+    <Compile Include="CJBasic\ObjectManagement\BeforehandCreator!1.cs" />
+    <Compile Include="CJBasic\Loggers\ILogger.cs" />
+    <Compile Include="CJBasic\Loggers\EmptyLogger.cs" />
+    <Compile Include="CJBasic\ObjectManagement\Forms\FormManager!2.cs" />
+    <Compile Include="CJBasic\ObjectManagement\Forms\IManagedForm!1.cs" />
+    <Compile Include="CJBasic\Arithmetic\BinarySearcher!1.cs" />
+    <Compile Include="CJBasic\Arithmetic\FpsCounter.cs" />
+    <Compile Include="CJBasic\Collections\CollectionHelper.cs" />
+    <Compile Include="CJBasic\Emit\DynamicProxy\EfficientAopProxyEmitter.cs" />
+    <Compile Include="CJBasic\Emit\ForEntity\DynamicEntityFactory.cs" />
+    <Compile Include="CJBasic\Collections\SortedArray!2.cs" />
+    <Compile Include="CJBasic\Widget\ExListView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CJBasic\Widget\ColorChooseForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CJBasic\Widget\Internals\STGMEDIUM.cs" />
+    <Compile Include="CJBasic\Widget\Internals\REOOBJECTFLAGS.cs" />
+    <Compile Include="CJBasic\Widget\Internals\REOBJECT.cs" />
+    <Compile Include="CJBasic\Widget\Internals\IOleContainer.cs" />
+    <Compile Include="CJBasic\Widget\Internals\ILockBytes.cs" />
+    <Compile Include="CJBasic\Threading\Engines\RetryEngine!1.cs" />
+    <Compile Include="CJBasic\Threading\Engines\TaskBag!1.cs" />
+    <Compile Include="CJBasic\ObjectManagement\Cache\IHotCache!2.cs" />
+    <Compile Include="CJBasic\ObjectManagement\Cache\HotCache!2.cs" />
+    <Compile Include="CJBasic\ObjectManagement\Trees\Multiple\IMTreeVal.cs" />
+    <Compile Include="CJBasic\ObjectManagement\Cache\IHiberarchyVal.cs" />
+    <Compile Include="CJBasic\Helpers\MachineHelper.cs" />
+    <Compile Include="CJBasic\Helpers\CpuInfo.cs" />
+    <Compile Include="CJBasic\DataStructure\IPriorityManager.cs" />
+    <Compile Include="CJBasic\Geometry\CompassDirections.cs" />
+    <Compile Include="CJBasic\Geometry\CompassDirectionsHelper.cs" />
+    <Compile Include="CJBasic\Arithmetic\FuzzyMatchHelper.cs" />
+    <Compile Include="CJBasic\Arithmetic\AStar\RoutePlanData.cs" />
+    <Compile Include="CJBasic\Arithmetic\AStar\AStarNode.cs" />
+    <Compile Include="CJBasic\Helpers\DraggerHelper.cs" />
+    <Compile Include="CJBasic\Helpers\DraggerHelperCore.cs" />
+    <Compile Include="CJBasic\Emit\DynamicProxy\EmptyArounder.cs" />
+    <Compile Include="CJBasic\Emit\DynamicBridge\DynamicEventBridgeEmitter.cs" />
+    <Compile Include="CJBasic\ShortTimeScope.cs" />
+    <Compile Include="CJBasic\Widget\Internals\tagOLEVERB.cs" />
+    <Compile Include="CJBasic\Widget\Internals\IDataObject.cs" />
+    <Compile Include="CJBasic\Widget\Internals\GETOBJECTOPTIONS.cs" />
+    <Compile Include="CJBasic\Threading\Timers\TimingTaskManager.cs" />
+    <Compile Include="CJBasic\ObjectManagement\Trees\Multiple\MultiTree!1.cs" />
+    <Compile Include="CJBasic\ObjectManagement\Cache\HiberarchyCache!1.cs" />
+    <Compile Include="CJBasic\Helpers\EnumHelper.cs" />
+    <Compile Include="CJBasic\ObjectManagement\SafeQueue!1.cs" />
+    <Compile Include="CJBasic\Geometry\RotationAngles.cs" />
+    <Compile Include="CJBasic\Arithmetic\Sorting\InsertionSorter!1.cs" />
+    <Compile Include="CJBasic\Emit\EmitHelper.cs" />
+    <Compile Include="CJBasic\Emit\ForEntity\PropertyQuickerFactory.cs" />
+    <Compile Include="CJBasic\Emit\ForEntity\IPropertyQuicker.cs" />
+    <Compile Include="CJBasic\Emit\ForEntity\RelectPropertyQuicker.cs" />
+    <Compile Include="CJBasic\Helpers\EventSafeTrigger.cs" />
+    <Compile Include="CJBasic\Demisemiquaver.cs" />
+    <Compile Include="CJBasic\CbGeneric.cs" />
+    <Compile Include="CJBasic\CbGeneric!1.cs" />
+    <Compile Include="CJBasic\CbGeneric!2.cs" />
+    <Compile Include="CJBasic\CbGeneric!3.cs" />
+    <Compile Include="CJBasic\CbGeneric!4.cs" />
+    <Compile Include="CJBasic\CbGeneric!5.cs" />
+    <Compile Include="CJBasic\CbGeneric!6.cs" />
+    <Compile Include="CJBasic\CbGeneric!7.cs" />
+    <Compile Include="CJBasic\CbGeneric!8.cs" />
+    <Compile Include="CJBasic\CbGeneric!9.cs" />
+    <Compile Include="CJBasic\Action!2.cs" />
+    <Compile Include="CJBasic\Action!3.cs" />
+    <Compile Include="CJBasic\Func!2.cs" />
+    <Compile Include="CJBasic\CbSimple.cs" />
+    <Compile Include="CJBasic\CbSimpleInt.cs" />
+    <Compile Include="CJBasic\CbSimpleBool.cs" />
+    <Compile Include="CJBasic\CbSimpleStr.cs" />
+    <Compile Include="CJBasic\CbSimpleObj.cs" />
+    <Compile Include="CJBasic\CbStream.cs" />
+    <Compile Include="CJBasic\CbDataRow.cs" />
+    <Compile Include="CJBasic\CbDateTime.cs" />
+    <Compile Include="CJBasic\CbException.cs" />
+    <Compile Include="CJBasic\CbNetworkStream.cs" />
+    <Compile Include="CJBasic\CbSimpleStrInt.cs" />
+    <Compile Include="CJBasic\CbProgress.cs" />
+    <Compile Include="CJBasic\IExceptionHandler.cs" />
+    <Compile Include="CJBasic\Parameter!2.cs" />
+    <Compile Include="CJBasic\Parameter!3.cs" />
+    <Compile Include="CJBasic\Parameter!4.cs" />
+    <Compile Include="CJBasic\Parameter!5.cs" />
+    <Compile Include="CJBasic\Parameter!6.cs" />
+    <Compile Include="CJBasic\Parameter!7.cs" />
+    <Compile Include="CJBasic\Widget\PageControlPanel2.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CJBasic\Threading\Timers\ICallbackTimer!1.cs" />
+    <Compile Include="CJBasic\Threading\Timers\CallbackTimer!1.cs" />
+    <Compile Include="CJBasic\Threading\Timers\CallbackTask!1.cs" />
+    <Compile Include="CJBasic\Threading\Synchronize\SmartRWLocker.cs" />
+    <Compile Include="CJBasic\Threading\Synchronize\AccessMode.cs" />
+    <Compile Include="CJBasic\Threading\Engines\IWorkerEngine!1.cs" />
+    <Compile Include="CJBasic\ObjectManagement\Trees\KDimension\KDSearchScope.cs" />
+    <Compile Include="CJBasic\ObjectManagement\Trees\KDimension\KDSearchType.cs" />
+    <Compile Include="CJBasic\ObjectManagement\Trees\Binary\MinMaxHeap!1.cs" />
+    <Compile Include="CJBasic\ObjectManagement\Trees\Binary\HeapType.cs" />
+    <Compile Include="CJBasic\ObjectManagement\Integration\ISegment!2.cs" />
+    <Compile Include="CJBasic\ObjectManagement\Increasing\Management\IRoundCache!1.cs" />
+    <Compile Include="CJBasic\Serialization\AgileConfiguration.cs" />
+    <Compile Include="CJBasic\Arithmetic\Sorting\MergeSorter!1.cs" />
+    <Compile Include="CJBasic\Loggers\EmptyExceptionLogger.cs" />
+    <Compile Include="CJBasic\Collections\DictionaryHelper.cs" />
+    <Compile Include="CJBasic\Emit\DynamicProxy\ExceptionInterceptor.cs" />
+    <Compile Include="CJBasic\Emit\ForEntity\IObjectClassifier!1.cs" />
+    <Compile Include="CJBasic\Emit\ForEntity\EntityClassifier!1.cs" />
+    <Compile Include="CJBasic\Widget\Internals\IRichEditOle.cs" />
+    <Compile Include="CJBasic\Widget\Internals\IOleClientSite.cs" />
+    <Compile Include="CJBasic\Widget\Internals\IAdviseSink.cs" />
+    <Compile Include="CJBasic\Widget\Internals\FORMATETC.cs" />
+    <Compile Include="CJBasic\Threading\Timers\RichTimer\TimerConfiguration.cs" />
+    <Compile Include="CJBasic\ObjectManagement\Trees\Multiple\MNode!1.cs" />
+    <Compile Include="CJBasic\ObjectManagement\Cache\ISmartDictionaryCache!2.cs" />
+    <Compile Include="CJBasic\ObjectManagement\Cache\SmartDictionaryCache!2.cs" />
+    <Compile Include="CJBasic\ObjectManagement\Increasing\CbIncreasementRetrieved!2.cs" />
+    <Compile Include="CJBasic\ObjectManagement\UniqueObjectList!1.cs" />
+    <Compile Include="CJBasic\DataStructure\PriorityManager.cs" />
+    <Compile Include="CJBasic\Geometry\GeometryHelper.cs" />
+    <Compile Include="CJBasic\Arithmetic\Sorting\QuickSorter!1.cs" />
+    <Compile Include="CJBasic\Arithmetic\GenericKMP.cs" />
+    <Compile Include="CJBasic\Arithmetic\CrossJoinContainer!1.cs" />
+    <Compile Include="CJBasic\Arithmetic\ICrossJoinable!1.cs" />
+    <Compile Include="CJBasic\Emit\DynamicProxy\EmptyAopInterceptor.cs" />
+    <Compile Include="CJBasic\Collections\CollectionConverter.cs" />
+    <Compile Include="CJBasic\Loggers\EmptySecurityLogger.cs" />
+    <Compile Include="CJBasic\Helpers\ImageHelper.cs" />
+    <Compile Include="CJBasic\Widget\Internals\CLIPFORMAT.cs" />
+    <Compile Include="CJBasic\ObjectManagement\Trees\Multiple\AgileMultiTree!1.cs" />
+    <Compile Include="CJBasic\ObjectManagement\Trees\Binary\SorttedBinaryTree!1.cs" />
+    <Compile Include="CJBasic\ObjectManagement\Increasing\Management\IRoundCachePersister!2.cs" />
+    <Compile Include="CJBasic\ObjectManagement\Circle!1.cs" />
+    <Compile Include="CJBasic\Helpers\ApplicationHelper.cs" />
+    <Compile Include="CJBasic\Serialization\FieldNotNullAttribute.cs" />
+    <Compile Include="CJBasic\Serialization\FieldChecker.cs" />
+    <Compile Include="CJBasic\Helpers\ValidationHelper.cs" />
+    <Compile Include="CJBasic\Geometry\Polygon.cs" />
+    <Compile Include="CJBasic\Emit\DynamicBridge\DynamicEventBridgeFactory.cs" />
+    <Compile Include="CJBasic\ByteConverter.cs" />
+    <Compile Include="CJBasic\Widget\Internals\tagLOGPALETTE.cs" />
+    <Compile Include="CJBasic\Widget\IImagePathGetter.cs" />
+    <Compile Include="CJBasic\Widget\DefaultImagePathGetter.cs" />
+    <Compile Include="CJBasic\Widget\AgileProgressBar.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CJBasic\Threading\Timers\RichTimer\TimerTaskManager.cs" />
+    <Compile Include="CJBasic\Threading\Timers\RichTimer\CbTimerList.cs" />
+    <Compile Include="CJBasic\Threading\Timers\RichTimer\TimerTask.cs" />
+    <Compile Include="CJBasic\Threading\Timers\RichTimer\CbRichTimer.cs" />
+    <Compile Include="CJBasic\Threading\Engines\WorkerEngine!1.cs" />
+    <Compile Include="CJBasic\ObjectManagement\Managers\RefreshableCacheManager.cs" />
+    <Compile Include="CJBasic\ObjectManagement\Increasing\Management\IRoundIncreasingCache!3.cs" />
+    <Compile Include="CJBasic\ObjectManagement\Cache\BidirectionalMapping!2.cs" />
+    <Compile Include="CJBasic\ObjectManagement\Cache\MultiDirectionalMapping!1.cs" />
+    <Compile Include="CJBasic\Arithmetic\ProbabilityDecider.cs" />
+    <Compile Include="CJBasic\Helpers\EventHelper.cs" />
+    <Compile Include="CJBasic\Helpers\WindowsHelper.cs" />
+    <Compile Include="CJBasic\Helpers\MouseEventFlag.cs" />
+    <Compile Include="CJBasic\Helpers\KeybdEventFlag.cs" />
+    <Compile Include="CJBasic\Helpers\INPUT.cs" />
+    <Compile Include="CJBasic\Helpers\MOUSEINPUT.cs" />
+    <Compile Include="CJBasic\Helpers\KEYBDINPUT.cs" />
+    <Compile Include="CJBasic\Helpers\HARDWAREINPUT.cs" />
+    <Compile Include="CJBasic\Addins\AddinUtil.cs" />
+    <Compile Include="CJBasic\Threading\Timers\RichTimer\RichTimerType.cs" />
+    <Compile Include="CJBasic\Threading\ThreadPoolTester.cs" />
+    <Compile Include="CJBasic\Threading\Engines\IWorkProcesser!1.cs" />
+    <Compile Include="CJBasic\Threading\Application\ICircleTaskSwitcher!1.cs" />
+    <Compile Include="CJBasic\ObjectManagement\Managers\IGroupingObject!2.cs" />
+    <Compile Include="CJBasic\ObjectManagement\Managers\IPriorityObject.cs" />
+    <Compile Include="CJBasic\ObjectManagement\Increasing\Management\RoundCacheManager!6.cs" />
+    <Compile Include="CJBasic\Loggers\FileLogger.cs" />
+    <Compile Include="CJBasic\Helpers\ReflectionHelper.cs" />
+    <Compile Include="CJBasic\Helpers\PublicHelper.cs" />
+    <Compile Include="CJBasic\ObjectManagement\Managers\SafeDictionary!2.cs" />
+    <Compile Include="CJBasic\ObjectManagement\CircleQueue!1.cs" />
+    <Compile Include="CJBasic\Emit\DynamicProxy\DynamicProxyFactory.cs" />
+    <Compile Include="CJBasic\Emit\AgileCreator.cs" />
+    <Compile Include="CJBasic\Emit\CreatorKey.cs" />
+    <Compile Include="CJBasic\Emit\ForEntity\IPropertyQuicker!1.cs" />
+    <Compile Include="CJBasic\Emit\Management\DynamicAssemblyManager.cs" />
+    <Compile Include="CJBasic\DateTimeScope.cs" />
+    <Compile Include="CJBasic\DateScope.cs" />
+    <Compile Include="CJBasic\Addins\AddinManager.cs" />
+    <Compile Include="CJBasic\Threading\Application\CircleTaskSwitcher!1.cs" />
+    <Compile Include="CJBasic\ObjectManagement\Managers\IRefreshableCache.cs" />
+    <Compile Include="CJBasic\Collections\KeyScope.cs" />
+    <Compile Include="CJBasic\Arithmetic\AStar\ICostGetter.cs" />
+    <Compile Include="CJBasic\Arithmetic\AStar\SimpleCostGetter.cs" />
+    <Compile Include="CJBasic\Emit\ForEntity\DynamicObjectClassifierEmitter.cs" />
+    <Compile Include="CJBasic\Contracts\EmptyContract.cs" />
+    <Compile Include="CJBasic\Contracts\StringContract.cs" />
+    <Compile Include="CJBasic\Contracts\IntContract.cs" />
+    <Compile Include="CJBasic\Contracts\LongContract.cs" />
+    <Compile Include="CJBasic\Contracts\BoolContract.cs" />
+    <Compile Include="CJBasic\Contracts\FloatContract.cs" />
+    <Compile Include="CJBasic\Contracts\TimeContract.cs" />
+    <EmbeddedResource Include="ESBasic.Widget.YearMonthPicker.resources" />
+    <EmbeddedResource Include="ESBasic.Widget.PageControlPanel2.resources" />
+    <EmbeddedResource Include="ESBasic.Widget.RichTimerConfigure.resources" />
+    <EmbeddedResource Include="ESBasic.Widget.EnumComboBox.resources" />
+    <EmbeddedResource Include="ESBasic.Widget.Thumbnail.resources" />
+    <EmbeddedResource Include="ESBasic.Widget.FaceEmotionBoard.resources" />
+    <EmbeddedResource Include="ESBasic.Widget.AgileProgressBar.resources" />
+    <EmbeddedResource Include="ESBasic.Widget.PageControlPanel.resources" />
+    <EmbeddedResource Include="ESBasic.Widget.ColorChooser.resources" />
+    <EmbeddedResource Include="ESBasic.Widget.ThumbnailListBox.resources" />
+    <EmbeddedResource Include="ESBasic.Widget.DataMergedView.resources" />
+    <EmbeddedResource Include="ESBasic.Widget.TrayForm.resources" />
+    <EmbeddedResource Include="ESBasic.Widget.ExListView.resources" />
+    <EmbeddedResource Include="ESBasic.Widget.ColorChooseForm.resources" />
+    <EmbeddedResource Include="ESBasic.Widget.CaptureScreenForm.resources" />
+  </ItemGroup>
+</Project>

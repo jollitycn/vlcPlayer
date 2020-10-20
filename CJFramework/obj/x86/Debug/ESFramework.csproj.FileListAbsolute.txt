@@ -1,0 +1,2 @@
+D:\BaiduNetdiskDownload\CostumeERP_20200928\JGNet\ESFramework\obj\x86\Debug\ESFramework.csprojAssemblyReference.cache
+D:\BaiduNetdiskDownload\CostumeERP_20200928\JGNet\ESFramework\obj\x86\Debug\ESFramework.csproj.CoreCompileInputs.cache

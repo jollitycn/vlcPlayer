@@ -1,0 +1,593 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{94ABC99C-89EC-44FA-8A0E-59FF3EAE4D62}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>JGNet.Core</RootNamespace>
+    <AssemblyName>JGNet.Core</AssemblyName>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+    <PlatformTarget>x64</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DataRabbit">
+      <HintPath>..\dlls\DataRabbit.dll</HintPath>
+    </Reference>
+    <Reference Include="LitJson">
+      <HintPath>..\dlls\LitJson.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\dlls\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="NPinyin">
+      <HintPath>..\dlls\NPinyin.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI">
+      <HintPath>..\dlls\NPOI.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AiDeployer\AiDeployerInfo.cs" />
+    <Compile Include="AiDeployer\AiDeployerRegisterInfo.cs" />
+    <Compile Include="AiDeployer\IAiDeployer4Service.cs" />
+    <Compile Include="AiDeployer\IAiDeployerCallBack.cs" />
+    <Compile Include="AiDeployer\RegisterResult.cs" />
+    <Compile Include="CommonInformationTypes.cs" />
+    <Compile Include="Common\MyDict.cs" />
+    <Compile Include="Common\MyException.cs" />
+    <Compile Include="Const\GeneralConfigKey.cs" />
+    <Compile Include="Const\Permission.cs" />
+    <Compile Include="Const\RemotingName.cs" />
+    <Compile Include="Const\ReturnVisitSubject.cs" />
+    <Compile Include="Const\SystemDefault.cs" />
+    <Compile Include="Const\CostumeSize.cs" />
+    <Compile Include="Const\CostumeStoreTrackChangeType.cs" />
+    <Compile Include="Const\SystemToken.cs" />
+    <Compile Include="cos_dotnet_sdk\Api\CosCloud.cs" />
+    <Compile Include="cos_dotnet_sdk\Common\CosParameters.cs" />
+    <Compile Include="cos_dotnet_sdk\Common\CosSha1Pure.cs" />
+    <Compile Include="cos_dotnet_sdk\Common\Extension.cs" />
+    <Compile Include="cos_dotnet_sdk\Common\HttpUtils.cs" />
+    <Compile Include="cos_dotnet_sdk\Common\Request.cs" />
+    <Compile Include="cos_dotnet_sdk\Common\SHA1.cs" />
+    <Compile Include="cos_dotnet_sdk\Common\Sign.cs" />
+    <Compile Include="DBEntityPartial\AdminUserPartial.cs" />
+    <Compile Include="DBEntityPartial\AllocateOrderPartial.cs" />
+    <Compile Include="DBEntityPartial\BarCodePartial.cs" />
+    <Compile Include="DBEntityPartial\BoundDetailPartial.cs" />
+    <Compile Include="DBEntityPartial\BrandPartial.cs" />
+    <Compile Include="DBEntityPartial\CashRecordPartial.cs" />
+    <Compile Include="DBEntityPartial\CheckStoreDetailPartial.cs" />
+    <Compile Include="DBEntityPartial\CheckStoreOrderPartial.cs" />
+    <Compile Include="DBEntityPartial\CommissionTemplate.cs" />
+    <Compile Include="DBEntityPartial\CostumeClass2.cs" />
+    <Compile Include="DBEntityPartial\CostumeColorPartial.cs" />
+    <Compile Include="DBEntityPartial\CostumeStoreHistory.cs" />
+    <Compile Include="DBEntityPartial\DistributorCommissionRecord.cs" />
+    <Compile Include="DBEntityPartial\EMall.cs" />
+    <Compile Include="DBEntityPartial\EmPosterPhotoPartial.cs" />
+    <Compile Include="DBEntityPartial\EmExpressCompany.cs" />
+    <Compile Include="DBEntityPartial\PrintTemplate.cs" />
+    <Compile Include="DBEntityPartial\Role.cs" />
+    <Compile Include="DBEntity\CommissionTemplate.cs" />
+    <Compile Include="DBEntity\CostumeClass2.cs" />
+    <Compile Include="DBEntity\DistributorCommissionRecord.cs" />
+    <Compile Include="DBEntity\OperationRecord.cs" />
+    <Compile Include="DBEntity\PrintTemplate.cs" />
+    <Compile Include="DBEntity\Role.cs" />
+    <Compile Include="DBEntity\RolePermissions.cs" />
+    <Compile Include="DBEntity\EmPosterImage.cs" />
+    <Compile Include="GeneralControl\DBEntityPartial\VersionUpdateRecord.cs" />
+    <Compile Include="GeneralControl\DBEntity\VersionUpdateRecord.cs" />
+    <Compile Include="GeneralControl\InteractEntity\GetBusinessAccountPagePara.cs" />
+    <Compile Include="InteractEntity\AccountDistributionInfo.cs" />
+    <Compile Include="InteractEntity\BoundDetailInfo.cs" />
+    <Compile Include="InteractEntity\CheckStoreSummaryPartial.cs" />
+    <Compile Include="DBEntityPartial\ConfusedStoreAdjustRecordPartial.cs" />
+    <Compile Include="DBEntityPartial\CostumeClassPartial.cs" />
+    <Compile Include="DBEntityPartial\CostumePartial.cs" />
+    <Compile Include="DBEntityPartial\CostumeStorePartial.cs" />
+    <Compile Include="DBEntityPartial\CostumeStoreTrackPartial.cs" />
+    <Compile Include="DBEntityPartial\ScrapOrder.cs" />
+    <Compile Include="DBEntityPartial\SupplierPartial.cs" />
+    <Compile Include="GeneralControl\BLInterface\Server\IRemoting4SimpleWeb.cs" />
+    <Compile Include="InteractEntity\CosCloudSignature.cs" />
+    <Compile Include="InteractEntity\CostumeClassInfo.cs" />
+    <Compile Include="InteractEntity\CostumeDistribution.cs" />
+    <Compile Include="InteractEntity\CostumeInvoicing.cs" />
+    <Compile Include="InteractEntity\DayBenefitReportPartial.cs" />
+    <Compile Include="InteractEntity\DayReportPartial.cs" />
+    <Compile Include="DBEntityPartial\DistributorPartial.cs" />
+    <Compile Include="DBEntityPartial\DistributorWithdrawRecordPartial.cs" />
+    <Compile Include="DBEntityPartial\EmCarriageCostTemplatePartial.cs" />
+    <Compile Include="DBEntityPartial\EmCostumePhotoPartial.cs" />
+    <Compile Include="DBEntityPartial\EmRefundOrderPartial.cs" />
+    <Compile Include="DBEntityPartial\EmRemarkPartial.cs" />
+    <Compile Include="DBEntityPartial\EmRetailDetailPartial.cs" />
+    <Compile Include="DBEntityPartial\EmRetailOrderPartial.cs" />
+    <Compile Include="DBEntityPartial\EmShoppingCartPartial.cs" />
+    <Compile Include="DBEntityPartial\GiftTicketPartial.cs" />
+    <Compile Include="DBEntityPartial\GiftTicketTemplatePartial.cs" />
+    <Compile Include="DBEntityPartial\PfCustomerPartial.cs" />
+    <Compile Include="DBEntity\Distributor.cs" />
+    <Compile Include="DBEntity\DistributorWithdrawRecord.cs" />
+    <Compile Include="GeneralControl\DBEntity\Announce.cs" />
+    <Compile Include="DistributionInformationTypes.cs" />
+    <Compile Include="InteractEntity\CheckBaseDataPara.cs" />
+    <Compile Include="InteractEntity\CostumeStoreChange.cs" />
+    <Compile Include="InteractEntity\CostumeStoreInfoSum.cs" />
+    <Compile Include="InteractEntity\DistributionInfo.cs" />
+    <Compile Include="InteractEntity\DistributorPage.cs" />
+    <Compile Include="InteractEntity\DistributorWithdrawRecordPage.cs" />
+    <Compile Include="InteractEntity\EditCostume.cs" />
+    <Compile Include="InteractEntity\EmOrderExportInfo.cs" />
+    <Compile Include="InteractEntity\GetAdminUsersPara.cs" />
+    <Compile Include="InteractEntity\GetCommissionRecordsPara.cs" />
+    <Compile Include="InteractEntity\GetCostumePricesPara.cs" />
+    <Compile Include="InteractEntity\GetDistributorsPara.cs" />
+    <Compile Include="InteractEntity\GetEmOfflineCostumePara.cs" />
+    <Compile Include="InteractEntity\GetGuidesPara.cs" />
+    <Compile Include="InteractEntity\GetHangUpPfsPara.cs" />
+    <Compile Include="InteractEntity\GetHangUpPurchasesPara.cs" />
+    <Compile Include="InteractEntity\GetDistributors4MemberPara.cs" />
+    <Compile Include="InteractEntity\GetPurchaseSummaryPara.cs" />
+    <Compile Include="InteractEntity\GetRetailSummaryPara.cs" />
+    <Compile Include="InteractEntity\GuideDayAchievementPartial.cs" />
+    <Compile Include="DBEntityPartial\GuideMonthAchievementPartial.cs" />
+    <Compile Include="DBEntityPartial\GuidePartial.cs" />
+    <Compile Include="DBEntityPartial\DifferenceDetailPartial.cs" />
+    <Compile Include="DBEntityPartial\DifferenceOrderPartial.cs" />
+    <Compile Include="DBEntityPartial\InboundOrderPartial.cs" />
+    <Compile Include="InteractEntity\GuideRankingInfo.cs" />
+    <Compile Include="InteractEntity\ImportPfInfosPara.cs" />
+    <Compile Include="InteractEntity\InventoryDayReportPartial.cs" />
+    <Compile Include="DBEntityPartial\MonthBenefitReportPartial.cs" />
+    <Compile Include="DBEntityPartial\MonthTaskPartial.cs" />
+    <Compile Include="DBEntityPartial\OutboundOrderPartial.cs" />
+    <Compile Include="DBEntityPartial\EmRefundTrackPartial.cs" />
+    <Compile Include="DBEntityPartial\PfAccountRecordPartial.cs" />
+    <Compile Include="DBEntityPartial\PfCustomerBalanceRecordPartial.cs" />
+    <Compile Include="DBEntityPartial\PfCustomerDetailPartial.cs" />
+    <Compile Include="DBEntityPartial\PfCustomerOrderPartial.cs" />
+    <Compile Include="DBEntityPartial\PfCustomerRetailDetailPartial.cs" />
+    <Compile Include="DBEntityPartial\PfCustomerRetailOrderPartial.cs" />
+    <Compile Include="DBEntityPartial\PfCustomerStorePartial.cs" />
+    <Compile Include="DBEntityPartial\PfOrderDetailPartial.cs" />
+    <Compile Include="DBEntityPartial\PfOrderPartial.cs" />
+    <Compile Include="DBEntityPartial\PurchaseOrderPartial.cs" />
+    <Compile Include="DBEntityPartial\RechargeRecordPartial.cs" />
+    <Compile Include="DBEntityPartial\ReplenishDetailPartial.cs" />
+    <Compile Include="DBEntityPartial\ReplenishOrderPartial.cs" />
+    <Compile Include="DBEntityPartial\RetailOrderPartial.cs" />
+    <Compile Include="DBEntityPartial\ReturnVisitRecordPartial.cs" />
+    <Compile Include="DBEntity\PfAccountRecord.cs" />
+    <Compile Include="DBEntity\PfCustomer.cs" />
+    <Compile Include="DBEntity\PfCustomerAddress.cs" />
+    <Compile Include="DBEntity\PfCustomerBalanceRecord.cs" />
+    <Compile Include="DBEntity\PfCustomerDetail.cs" />
+    <Compile Include="DBEntity\PfCustomerFavoriteCostume.cs" />
+    <Compile Include="DBEntity\PfCustomerOrder.cs" />
+    <Compile Include="DBEntity\PfCustomerRechargeRecord.cs" />
+    <Compile Include="DBEntity\PfCustomerRetailDetail.cs" />
+    <Compile Include="DBEntity\PfCustomerRetailOrder.cs" />
+    <Compile Include="DBEntity\PfCustomerStore.cs" />
+    <Compile Include="DBEntity\PfOrder.cs" />
+    <Compile Include="DBEntity\PfOrderDetail.cs" />
+    <Compile Include="DBEntity\PfShoppingCart.cs" />
+    <Compile Include="InteractEntity\AddPfShoppingCartPara.cs" />
+    <Compile Include="InteractEntity\EmPfCostumeInfo.cs" />
+    <Compile Include="InteractEntity\EmPfCostumePage.cs" />
+    <Compile Include="InteractEntity\GetCustomerRetailPagePara.cs" />
+    <Compile Include="InteractEntity\GetPfCustomerOrderPagePara.cs" />
+    <Compile Include="InteractEntity\GetPfCustomerPagePara.cs" />
+    <Compile Include="InteractEntity\GetPfCustomerStorePagePara.cs" />
+    <Compile Include="InteractEntity\IsCostumeHotPara.cs" />
+    <Compile Include="InteractEntity\IsCostumeNewPara.cs" />
+    <Compile Include="InteractEntity\MemberBalanceChange.cs" />
+    <Compile Include="InteractEntity\PfAccountRecordPage.cs" />
+    <Compile Include="InteractEntity\PfCostumeStoreInfo.cs" />
+    <Compile Include="InteractEntity\PfCustomerBalanceRecordPage.cs" />
+    <Compile Include="InteractEntity\PfCustomerDetails.cs" />
+    <Compile Include="InteractEntity\PfCustomerInvoicing.cs" />
+    <Compile Include="InteractEntity\PfCustomerOrderCount.cs" />
+    <Compile Include="InteractEntity\PfCustomerRetailInfo.cs" />
+    <Compile Include="InteractEntity\PfInfo.cs" />
+    <Compile Include="InteractEntity\PfOrderPage.cs" />
+    <Compile Include="InteractEntity\PfRetailAnalysis.cs" />
+    <Compile Include="InteractEntity\PrintSysInfo.cs" />
+    <Compile Include="InteractEntity\PrintTemplateInfo.cs" />
+    <Compile Include="InteractEntity\ReatilSumInfo.cs" />
+    <Compile Include="InteractEntity\RenewalInfo.cs" />
+    <Compile Include="InteractEntity\RetailPrintInfo.cs" />
+    <Compile Include="InteractEntity\SalesQuantityDayReportPartial.cs" />
+    <Compile Include="DBEntityPartial\ShopPartial.cs" />
+    <Compile Include="DBEntityPartial\SignRecordPartial.cs" />
+    <Compile Include="DBEntityPartial\SizeGroupPartial.cs" />
+    <Compile Include="DBEntityPartial\SupplierAccountRecordPartial.cs" />
+    <Compile Include="DBEntityPartial\WxPayCallbackRecordPartial.cs" />
+    <Compile Include="DBEntity\AdminUser.cs" />
+    <Compile Include="DBEntity\AllocateOrder.cs" />
+    <Compile Include="DBEntity\AutoReplenishCostumePara.cs" />
+    <Compile Include="DBEntity\BarCode.cs" />
+    <Compile Include="DBEntity\Brand.cs" />
+    <Compile Include="DBEntity\CashRecord.cs" />
+    <Compile Include="DBEntity\CheckStoreDetail.cs" />
+    <Compile Include="DBEntity\CheckStoreOrder.cs" />
+    <Compile Include="InteractEntity\CheckStoreSummary.cs" />
+    <Compile Include="DBEntity\ConfusedStoreAdjustRecord.cs" />
+    <Compile Include="DBEntity\CostumeClass.cs" />
+    <Compile Include="DBEntity\CostumeColor.cs" />
+    <Compile Include="DBEntity\CostumeStoreHistory.cs" />
+    <Compile Include="DBEntity\CostumeStoreSummary.cs" />
+    <Compile Include="DBEntity\CostumeStoreTrack.cs" />
+    <Compile Include="InteractEntity\DayBenefitReport.cs" />
+    <Compile Include="InteractEntity\DayReport.cs" />
+    <Compile Include="DBEntity\DifferenceDetail.cs" />
+    <Compile Include="DBEntity\DifferenceOrder.cs" />
+    <Compile Include="DBEntity\EmCarriageCostDetail.cs" />
+    <Compile Include="DBEntity\EmCarriageCostTemplate.cs" />
+    <Compile Include="DBEntity\EmCostumePhoto.cs" />
+    <Compile Include="DBEntity\EmExpressCompany.cs" />
+    <Compile Include="DBEntity\EmFavoriteCostume.cs" />
+    <Compile Include="DBEntity\EmRefundAddress.cs" />
+    <Compile Include="DBEntity\EmRefundDetail.cs" />
+    <Compile Include="DBEntity\EmRefundOrder.cs" />
+    <Compile Include="DBEntity\EmRefundTrack.cs" />
+    <Compile Include="DBEntity\EmRetailDetail.cs" />
+    <Compile Include="DBEntity\EmRetailOrder.cs" />
+    <Compile Include="DBEntity\EmShoppingCart.cs" />
+    <Compile Include="DBEntity\EmStoreRemark.cs" />
+    <Compile Include="DBEntity\GiftTicket.cs" />
+    <Compile Include="DBEntity\GiftTicketTemplate.cs" />
+    <Compile Include="InteractEntity\GuideDayAchievement.cs" />
+    <Compile Include="DBEntity\GuideFavoriteSmsTemplate.cs" />
+    <Compile Include="DBEntity\GuideMemo.cs" />
+    <Compile Include="DBEntity\GuideMonthAchievement.cs" />
+    <Compile Include="DBEntity\BoundDetail.cs" />
+    <Compile Include="DBEntity\InboundOrder.cs" />
+    <Compile Include="InteractEntity\InventoryDayReport.cs" />
+    <Compile Include="DBEntity\MonthBenefitReport.cs" />
+    <Compile Include="InteractEntity\MonthReport.cs" />
+    <Compile Include="DBEntity\MonthTask.cs" />
+    <Compile Include="DBEntity\OutboundOrder.cs" />
+    <Compile Include="DBEntity\PurchaseOrder.cs" />
+    <Compile Include="DBEntity\RechargeDonateRule.cs" />
+    <Compile Include="DBEntity\RechargeRecord.cs" />
+    <Compile Include="DBEntity\ReplenishDetail.cs" />
+    <Compile Include="DBEntity\ReplenishOrder.cs" />
+    <Compile Include="DBEntity\ReturnVisitMemo.cs" />
+    <Compile Include="DBEntity\ReturnVisitRecord.cs" />
+    <Compile Include="DBEntity\ReturnVisitSmsRecord.cs" />
+    <Compile Include="InteractEntity\SalesQuantityDayReport.cs" />
+    <Compile Include="DBEntity\ScrapDetail.cs" />
+    <Compile Include="DBEntity\ScrapOrder.cs" />
+    <Compile Include="DBEntity\ShortMessageTemplate.cs" />
+    <Compile Include="DBEntity\SignRecord.cs" />
+    <Compile Include="DBEntity\SizeGroup.cs" />
+    <Compile Include="DBEntity\Supplier.cs" />
+    <Compile Include="DBEntity\SupplierAccountRecord.cs" />
+    <Compile Include="GeneralControl\BLInterface\BLServer\IBLService4WxPayWeb.cs" />
+    <Compile Include="GeneralControl\BLInterface\Server\IRemoting4DataImporter.cs" />
+    <Compile Include="GeneralControl\BLInterface\Server\IRemoting4ShopWeb.cs" />
+    <Compile Include="GeneralControl\BLInterface\BLServer\IBLService4AiDeployer.cs" />
+    <Compile Include="GeneralControl\BLInterface\BLServer\IBLService4Control.cs" />
+    <Compile Include="GeneralControl\BLInterface\BLServer\IBLService.cs" />
+    <Compile Include="GeneralControl\BLInterface\Server\IRemoting4WxPayWeb.cs" />
+    <Compile Include="GeneralControl\BLInterface\Server\IRemotingHandler.cs" />
+    <Compile Include="GeneralControl\BLInterface\Server\IRemoting4BossWeb.cs" />
+    <Compile Include="GeneralControl\BLInterface\Server\IRemoting4GuideWeb.cs" />
+    <Compile Include="GeneralControl\BLInterface\BLServer\IBLService4AppWeb.cs" />
+    <Compile Include="GeneralControl\BLInterface\BLServer\IBLService4Server.cs" />
+    <Compile Include="GeneralControl\BLInterface\BLServer\IBLService4ShopWeb.cs" />
+    <Compile Include="GeneralControl\BLInterface\BLServer\IBLService4SInfoWeb.cs" />
+    <Compile Include="GeneralControl\DBEntityPartial\BusinessAccount.cs" />
+    <Compile Include="GeneralControl\DBEntityPartial\PaymentRecord.cs" />
+    <Compile Include="GeneralControl\DBEntityPartial\WxMemberAddress.cs" />
+    <Compile Include="GeneralControl\DBEntity\BusinessAccount.cs" />
+    <Compile Include="GeneralControl\DBEntity\EMall.cs" />
+    <Compile Include="GeneralControl\DBEntity\EmRemark.cs" />
+    <Compile Include="GeneralControl\DBEntity\GeneralConfig.cs" />
+    <Compile Include="GeneralControl\DBEntity\GeneralUser.cs" />
+    <Compile Include="GeneralControl\DBEntity\PaymentRecord.cs" />
+    <Compile Include="GeneralControl\DBEntity\SysErrorRecord.cs" />
+    <Compile Include="GeneralControl\DBEntity\WxMember.cs" />
+    <Compile Include="GeneralControl\DBEntity\WxMemberAddress.cs" />
+    <Compile Include="GeneralControl\DBEntity\WxPayCallbackRecord.cs" />
+    <Compile Include="GeneralControl\DBEntity\WxShopMan.cs" />
+    <Compile Include="GeneralControl\InteractEntity\ActivityMemberInfo.cs" />
+    <Compile Include="GeneralControl\InteractEntity\CarriageCost.cs" />
+    <Compile Include="GeneralControl\InteractEntity\CostumeAnalysis.cs" />
+    <Compile Include="GeneralControl\InteractEntity\CostumeStoreAnalysis.cs" />
+    <Compile Include="GeneralControl\InteractEntity\EmRefundTrackInfo.cs" />
+    <Compile Include="GeneralControl\InteractEntity\GuideMemoPagePara.cs" />
+    <Compile Include="GeneralControl\InteractEntity\GraphData.cs" />
+    <Compile Include="GeneralControl\InteractEntity\LoadServerInfo.cs" />
+    <Compile Include="GeneralControl\InteractEntity\MyEmOrderDetail.cs" />
+    <Compile Include="GeneralControl\InteractEntity\RetailOrderForVIP.cs" />
+    <Compile Include="GeneralControl\InteractEntity\ReturnVisitMemoPagePara.cs" />
+    <Compile Include="GeneralControl\InteractEntity\WebResponseObj.cs" />
+    <Compile Include="GeneralControl\InteractEntity\WeiXinUserLoginData.cs" />
+    <Compile Include="GeneralControl\InteractEntity\WeiXinUserWebCache.cs" />
+    <Compile Include="GeneralControl\MyEnum\BindWxShopManResult.cs" />
+    <Compile Include="GeneralControl\MyEnum\BoolSearchType.cs" />
+    <Compile Include="GeneralControl\MyEnum\CostumeSortType.cs" />
+    <Compile Include="GeneralControl\MyEnum\DatasType.cs" />
+    <Compile Include="GeneralControl\MyEnum\DateType.cs" />
+    <Compile Include="GeneralControl\MyEnum\DeployResult.cs" />
+    <Compile Include="GeneralControl\MyEnum\EmRetailOrderState.cs" />
+    <Compile Include="GeneralControl\MyEnum\GroupType.cs" />
+    <Compile Include="GeneralControl\MyEnum\MemberSortType.cs" />
+    <Compile Include="GeneralControl\MyEnum\RemarkScore.cs" />
+    <Compile Include="GeneralControl\MyEnum\UserType.cs" />
+    <Compile Include="EMallInformationTypes.cs" />
+    <Compile Include="InteractEntity\AgreeRefundPara.cs" />
+    <Compile Include="InteractEntity\AllocateOrderPagePara.cs" />
+    <Compile Include="InteractEntity\AllocateOutboundPara.cs" />
+    <Compile Include="InteractEntity\AveragePrice2AndWinLostMoney.cs" />
+    <Compile Include="InteractEntity\BaseOrderPara.cs" />
+    <Compile Include="InteractEntity\BasePage.cs" />
+    <Compile Include="InteractEntity\CancelRetailOrderPara.cs" />
+    <Compile Include="InteractEntity\CashRecordPagePara.cs" />
+    <Compile Include="InteractEntity\CheckCostumeStore.cs" />
+    <Compile Include="InteractEntity\CheckStore.cs" />
+    <Compile Include="InteractEntity\CheckStoreOrderPagePara.cs" />
+    <Compile Include="InteractEntity\CheckStoreOrderIDAndUser.cs" />
+    <Compile Include="InteractEntity\ConfirmRefundPara.cs" />
+    <Compile Include="InteractEntity\CosLoginInfo.cs" />
+    <Compile Include="InteractEntity\CostumeClassOrderNo.cs" />
+    <Compile Include="InteractEntity\CostumeListPagePara.cs" />
+    <Compile Include="InteractEntity\CreateAllReportPara.cs" />
+    <Compile Include="InteractEntity\EmOrderCount4State.cs" />
+    <Compile Include="InteractEntity\EnabledSizeGroupPara.cs" />
+    <Compile Include="InteractEntity\GetBarCodesPara.cs" />
+    <Compile Include="InteractEntity\GetCostumeStoreAnalysisPara.cs" />
+    <Compile Include="InteractEntity\GetGuideAchievementDetailsPara.cs" />
+    <Compile Include="InteractEntity\GetRetailAnalysisPara.cs" />
+    <Compile Include="InteractEntity\GetShopBenefitReportsPara.cs" />
+    <Compile Include="InteractEntity\GuideAchievementSummarys.cs" />
+    <Compile Include="InteractEntity\InteractResult.cs" />
+    <Compile Include="InteractEntity\PriceRangeReport.cs" />
+    <Compile Include="InteractEntity\CostumeRetailAnalysisPagePara.cs" />
+    <Compile Include="InteractEntity\CostumeStore4GeneralStorePage.cs" />
+    <Compile Include="InteractEntity\CostumeStore4ReplenishInfoPara.cs" />
+    <Compile Include="InteractEntity\CostumeStoreListPagePara.cs" />
+    <Compile Include="InteractEntity\CostumeGiftTicketInfo.cs" />
+    <Compile Include="InteractEntity\EmOutboundPara.cs" />
+    <Compile Include="InteractEntity\EnabledGiftTicketPara.cs" />
+    <Compile Include="InteractEntity\GetCheckStoreSummaryPagePara.cs" />
+    <Compile Include="InteractEntity\GetConfusedStoreAdjustRecordPagePara.cs" />
+    <Compile Include="InteractEntity\GetEmOrderPagePara.cs" />
+    <Compile Include="InteractEntity\GetGuideDayAchievementsPara.cs" />
+    <Compile Include="InteractEntity\GetLogisticsPara.cs" />
+    <Compile Include="InteractEntity\MonthExpenseInfo.cs" />
+    <Compile Include="InteractEntity\GetReportsPara.cs" />
+    <Compile Include="InteractEntity\GetEmCostumePagePara.cs" />
+    <Compile Include="InteractEntity\GetCostumeItemPagePara.cs" />
+    <Compile Include="InteractEntity\CostumeStoreTrackPagePara.cs" />
+    <Compile Include="InteractEntity\DayBenefitReportDetailPara.cs" />
+    <Compile Include="InteractEntity\DayBenefitReportPage.cs" />
+    <Compile Include="InteractEntity\DayReportPagePara.cs" />
+    <Compile Include="InteractEntity\DifferenceOrderConfirmedPara.cs" />
+    <Compile Include="InteractEntity\GetCostumeStorePagePara.cs" />
+    <Compile Include="InteractEntity\GetEmCostumePara.cs" />
+    <Compile Include="InteractEntity\GetMonthReportPara.cs" />
+    <Compile Include="InteractEntity\GetMonthTaskPara.cs" />
+    <Compile Include="InteractEntity\GetSalesPromotionListPara.cs" />
+    <Compile Include="InteractEntity\DifferenceOrderPagePara.cs" />
+    <Compile Include="InteractEntity\GiftTicketPage.cs" />
+    <Compile Include="InteractEntity\GiftTicketTemplatePagePara.cs" />
+    <Compile Include="InteractEntity\GuideAchievementsPara.cs" />
+    <Compile Include="InteractEntity\GuideAchievementSummaryPagePara.cs" />
+    <Compile Include="InteractEntity\GuideMonthAchievementsPara.cs" />
+    <Compile Include="InteractEntity\GuideMonthAchievementSummarysPara.cs" />
+    <Compile Include="InteractEntity\GuideReturnVisitPara.cs" />
+    <Compile Include="InteractEntity\InboundOrderPagePara.cs" />
+    <Compile Include="InteractEntity\InboundPara.cs" />
+    <Compile Include="InteractEntity\InsertResultAndAutoID.cs" />
+    <Compile Include="InteractEntity\InsertShopGetAutoCode.cs" />
+    <Compile Include="InteractEntity\GetMonthBenefitReportPara.cs" />
+    <Compile Include="InteractEntity\InventoryDayReportPage.cs" />
+    <Compile Include="InteractEntity\IssueGiftTicketPara.cs" />
+    <Compile Include="InteractEntity\MonthTaskPagePara.cs" />
+    <Compile Include="InteractEntity\OperationInfo.cs" />
+    <Compile Include="InteractEntity\Outbound.cs" />
+    <Compile Include="InteractEntity\OutboundOrderPagePara.cs" />
+    <Compile Include="InteractEntity\PaymentDetailSummary.cs" />
+    <Compile Include="InteractEntity\PhotoData.cs" />
+    <Compile Include="InteractEntity\PurchaseCostume.cs" />
+    <Compile Include="InteractEntity\RefusedRefundPara.cs" />
+    <Compile Include="InteractEntity\RetailAnalysisInfo.cs" />
+    <Compile Include="InteractEntity\RetailOrderAdvancePara.cs" />
+    <Compile Include="InteractEntity\ReturnCostumePagePara.cs" />
+    <Compile Include="InteractEntity\PurchaseCostumePagePara.cs" />
+    <Compile Include="InteractEntity\RechargeRecordListPara.cs" />
+    <Compile Include="InteractEntity\RefundListPagePara.cs" />
+    <Compile Include="InteractEntity\ReplenishCostume.cs" />
+    <Compile Include="InteractEntity\ReplenishCostumePagePara.cs" />
+    <Compile Include="InteractEntity\RetailListPagePara.cs" />
+    <Compile Include="Const\OrderPrefix.cs" />
+    <Compile Include="InteractEntity\ReturnCostume.cs" />
+    <Compile Include="InteractEntity\ReturnOrderPagePara.cs" />
+    <Compile Include="InteractEntity\SalesQuantityRankingPagePara.cs" />
+    <Compile Include="InteractEntity\ScrapCostume.cs" />
+    <Compile Include="InteractEntity\ScrapPagePara.cs" />
+    <Compile Include="InteractEntity\SearchCostumePagePara.cs" />
+    <Compile Include="InteractEntity\ShopSalesDetailPage.cs" />
+    <Compile Include="InteractEntity\SignRecordPagePara.cs" />
+    <Compile Include="InteractEntity\SupplierAccountRecordDetailInfo.cs" />
+    <Compile Include="InteractEntity\SupplierAccountRecordPagePara.cs" />
+    <Compile Include="InteractEntity\TransitCostumeStorePara.cs" />
+    <Compile Include="InteractEntity\TreeModel.cs" />
+    <Compile Include="InteractEntity\UpdateBigCostumeClass.cs" />
+    <Compile Include="InteractEntity\UpdateCheckStorePara.cs" />
+    <Compile Include="InteractEntity\UpdateCostumeValidPara.cs" />
+    <Compile Include="InteractEntity\UpdateDisplayIndex.cs" />
+    <Compile Include="InteractEntity\UpdateEMallLogoPara.cs" />
+    <Compile Include="InteractEntity\UpdateEmRecommandPara.cs" />
+    <Compile Include="InteractEntity\UpdatePfAccountRecordPara.cs" />
+    <Compile Include="InteractEntity\UpdateRechargeRecordPara.cs" />
+    <Compile Include="InteractEntity\UpdateReplenishOrderStatePara.cs" />
+    <Compile Include="InteractEntity\UpdateSalesPromotionPara.cs" />
+    <Compile Include="InteractEntity\UpdateCostumeStorePricePara.cs" />
+    <Compile Include="InteractEntity\UpdateShopRechargeRuleIDPara.cs" />
+    <Compile Include="InteractEntity\UpdateTimePara.cs" />
+    <Compile Include="InteractEntity\UploadCostumePhotoPara.cs" />
+    <Compile Include="InteractEntity\UserInfo.cs" />
+    <Compile Include="InteractEntity\VersionUpdateRecordPage.cs" />
+    <Compile Include="InteractEntity\VipContribution.cs" />
+    <Compile Include="InteractEntity\WorkTableInfo.cs" />
+    <Compile Include="InteractEntity\WorkTableInfoPara.cs" />
+    <Compile Include="ManageInformationTypes.cs" />
+    <Compile Include="MyEnum\AccountType.cs" />
+    <Compile Include="MyEnum\AllocateOrderState.cs" />
+    <Compile Include="MyEnum\AllocateType.cs" />
+    <Compile Include="MyEnum\AnnounceType.cs" />
+    <Compile Include="MyEnum\AccountDistributionType.cs" />
+    <Compile Include="MyEnum\CashRecordFeeType.cs" />
+    <Compile Include="MyEnum\CheckStoreOrderState.cs" />
+    <Compile Include="MyEnum\CheckType.cs" />
+    <Compile Include="MyEnum\CostumeClassLevel.cs" />
+    <Compile Include="MyEnum\CostumeProperty.cs" />
+    <Compile Include="MyEnum\CustomerType.cs" />
+    <Compile Include="MyEnum\DifferenceOrderConfirmed.cs" />
+    <Compile Include="MyEnum\DistributorLevelType.cs" />
+    <Compile Include="MyEnum\DistributorType.cs" />
+    <Compile Include="MyEnum\EmCostumeType.cs" />
+    <Compile Include="MyEnum\EmPosterImageType.cs" />
+    <Compile Include="MyEnum\LanguageType.cs" />
+    <Compile Include="MyEnum\MemberState.cs" />
+    <Compile Include="MyEnum\OnlineType.cs" />
+    <Compile Include="MyEnum\OperationUserType.cs" />
+    <Compile Include="MyEnum\PaymentType.cs" />
+    <Compile Include="MyEnum\PfCustomerOrderState.cs" />
+    <Compile Include="MyEnum\PromotionTypeEnum.cs" />
+    <Compile Include="MyEnum\ReplenishOrderState.cs" />
+    <Compile Include="MyEnum\ResponseTypes.cs" />
+    <Compile Include="MyEnum\RetailOrderType.cs" />
+    <Compile Include="MyEnum\RolePermissionEnum.cs" />
+    <Compile Include="MyEnum\Season.cs" />
+    <Compile Include="MyEnum\SignType.cs" />
+    <Compile Include="MyEnum\StoreLock.cs" />
+    <Compile Include="NoticeInformationTypes.cs" />
+    <Compile Include="DBEntityPartial\RechargeDonateRulePartial.cs" />
+    <Compile Include="Online\OLCostumePage.cs" />
+    <Compile Include="Pf\Enum\PfCostumeType.cs" />
+    <Compile Include="Pf\InteractEntity\PfCostumePage.cs" />
+    <Compile Include="Pf\InteractEntity\UpdatePfShoppingCartInfo.cs" />
+    <Compile Include="RemotingEntity\ActiveReturnVisitInfoPage.cs" />
+    <Compile Include="RemotingEntity\AutoUpgradeInfo.cs" />
+    <Compile Include="RemotingEntity\BirthdayReturnVisitInfoPage.cs" />
+    <Compile Include="RemotingEntity\GoodMaori.cs" />
+    <Compile Include="RemotingEntity\RetailReturnVisitInfoPage.cs" />
+    <Compile Include="RemotingEntity\ReturnVisitAnalysisPage.cs" />
+    <Compile Include="RemotingEntity\ReturnVisitInfo.cs" />
+    <Compile Include="RemotingEntity\ReturnVisitRecordPage.cs" />
+    <Compile Include="RemotingEntity\WxPayInfo.cs" />
+    <Compile Include="Sms\Interface\IRemotingManager.cs" />
+    <Compile Include="Sms\Interface\ISms4GuideWeb.cs" />
+    <Compile Include="Tools\AddressHelper.cs" />
+    <Compile Include="Tools\BarCodeInfo.cs" />
+    <Compile Include="Tools\CostumeStoreHelper.cs" />
+    <Compile Include="DBEntityPartial\MemberPartial.cs" />
+    <Compile Include="DBEntityPartial\RetailDetailPartial.cs" />
+    <Compile Include="DBEntityPartial\SalesPromotionPartial.cs" />
+    <Compile Include="DBEntity\Costume.cs" />
+    <Compile Include="DBEntity\CostumeStore.cs" />
+    <Compile Include="DBEntity\Guide.cs" />
+    <Compile Include="DBEntity\Member.cs" />
+    <Compile Include="DBEntity\ParameterConfig.cs" />
+    <Compile Include="DBEntity\RetailDetail.cs" />
+    <Compile Include="DBEntity\RetailOrder.cs" />
+    <Compile Include="DBEntity\SalesPromotion.cs" />
+    <Compile Include="DBEntity\Shop.cs" />
+    <Compile Include="PosInformationTypes.cs" />
+    <Compile Include="InteractEntity\CostumeStoreListPara.cs" />
+    <Compile Include="InteractEntity\MemberListPage.cs" />
+    <Compile Include="InteractEntity\RefundCostume.cs" />
+    <Compile Include="InteractEntity\RetailCostume.cs" />
+    <Compile Include="Const\ParameterConfigKey.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Settlement\SalesPromotion\DiscountSalesPromotion.cs" />
+    <Compile Include="Settlement\ISalesPromotion.cs" />
+    <Compile Include="Settlement\SalesPromotion\MJSalesPromotion.cs" />
+    <Compile Include="Settlement\SalesPromotionFactory.cs" />
+    <Compile Include="Settlement\SettlementMoney.cs" />
+    <Compile Include="Tools\DataHelper.cs" />
+    <Compile Include="Tools\DisplayUtil.cs" />
+    <Compile Include="Tools\EnumHelper.cs" />
+    <Compile Include="Tools\ErrorMsgHelper.cs" />
+    <Compile Include="Tools\ExceptionHelper.cs" />
+    <Compile Include="Tools\GiftTicketHelper.cs" />
+    <Compile Include="Tools\HttpHandler.cs" />
+    <Compile Include="Tools\ImageHelper.cs" />
+    <Compile Include="Tools\IPHelper.cs" />
+    <Compile Include="Tools\KuaiDi100Helper.cs" />
+    <Compile Include="Tools\KuaiDiException.cs" />
+    <Compile Include="Tools\ListItem.cs" />
+    <Compile Include="Tools\MathHelper.cs" />
+    <Compile Include="Tools\GiftTicket\GiftTicketAlgorithm.cs" />
+    <Compile Include="Tools\GiftTicket\GiftTicketFitnessCalc.cs" />
+    <Compile Include="Tools\GiftTicket\GiftTicketIndividual.cs" />
+    <Compile Include="Tools\GiftTicket\GiftTicketMatch.cs" />
+    <Compile Include="Tools\GiftTicket\GiftTicketPopulation.cs" />
+    <Compile Include="Tools\NPOIHelper.cs" />
+    <Compile Include="Tools\NumberHelper.cs" />
+    <Compile Include="Tools\SerializeHelper.cs" />
+    <Compile Include="Tools\StringHelper.cs" />
+    <Compile Include="Tools\TimeHelper.cs" />
+    <Compile Include="Tools\YearHelper.cs" />
+    <Compile Include="TransferServer\Entity\TransferCostume.cs" />
+    <Compile Include="TransferServer\ITransferServer.cs" />
+    <Compile Include="TransferServer\ITransferServer4Server.cs" />
+    <Compile Include="WxPayApi\lib\Config.cs" />
+    <Compile Include="WxPayApi\lib\Data.cs" />
+    <Compile Include="WxPayApi\lib\Exception.cs" />
+    <Compile Include="WxPayApi\lib\HttpService.cs" />
+    <Compile Include="WxPayApi\lib\Log.cs" />
+    <Compile Include="WxPayApi\lib\WxPayApi.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CJBasic\CJBasic.csproj">
+      <Project>{414e1d01-f1bd-4f9c-a00d-10549ee5db68}</Project>
+      <Name>CJBasic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CJFramework\CJFramework.csproj">
+      <Project>{922f10fc-080a-4fb4-ae93-2041b807a749}</Project>
+      <Name>CJFramework</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

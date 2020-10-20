@@ -1,0 +1,453 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build">
+  <PropertyGroup>
+    <ProjectType>local</ProjectType>
+    <ProjectVersion>7.10.377</ProjectVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{922F10FC-080A-4FB4-AE93-2041B807A749}</ProjectGuid>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <AssemblyName>CJFramework</AssemblyName>
+    <OutputType>Library</OutputType>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x64</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <LangVersion>8.0</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <LangVersion>8.0</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup>
+    <RootNamespace>CJFramework</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Management" />
+    <Compile Include="AssemblyInfo.cs" />
+    <Compile Include="Global.cs" />
+    <Compile Include="Class0.cs" />
+    <Compile Include="CJPlus\Rapid\RapidEngineFactory.cs" />
+    <Compile Include="IFileTransHelper.cs" />
+    <Compile Include="FileReceiver.cs" />
+    <Compile Include="CJPlus\Application\CustomizeInfo\Server\GInterface.cs" />
+    <Compile Include="CJPlus\Application\ResultHandler.cs" />
+    <Compile Include="CJPlus\Application\CallbackHandler.cs" />
+    <Compile Include="CJPlus\Rapid\IRapidEngine.cs" />
+    <Compile Include="CJPlus\Rapid\IRapidPassiveEngine.cs" />
+    <Compile Include="CJPlus\FileTransceiver\IFileTransferingEvents.cs" />
+    <Compile Include="IFileTransferingEventsHelper.cs" />
+    <Compile Include="Class2.cs" />
+    <Compile Include="Interface2.cs" />
+    <Compile Include="Class3.cs" />
+    <Compile Include="Interface3.cs" />
+    <Compile Include="ICommitMessageToServer.cs" />
+    <Compile Include="Interface46.cs" />
+    <Compile Include="Interface5.cs" />
+    <Compile Include="Class4.cs" />
+    <Compile Include="Class5.cs" />
+    <Compile Include="Class8.cs" />
+    <Compile Include="Class9.cs" />
+    <Compile Include="Class10.cs" />
+    <Compile Include="Class11.cs" />
+    <Compile Include="Class12.cs" />
+    <Compile Include="IAction.cs" />
+    <Compile Include="CJFramework\Server\DisconnectedType.cs" />
+    <Compile Include="IFileTransferingEventsHelper1.cs" />
+    <Compile Include="Class13.cs" />
+    <Compile Include="Interface8.cs" />
+    <Compile Include="IStreamContract.cs" />
+    <Compile Include="IStreamContractHelper2.cs" />
+    <Compile Include="Class14.cs" />
+    <Compile Include="Interface10.cs" />
+    <Compile Include="ITextContractHelper.cs" />
+    <Compile Include="Class15.cs" />
+    <Compile Include="Class17.cs" />
+    <Compile Include="OutConnectionManager.cs" />
+    <Compile Include="CJPlus\Application\Group\Passive\IGroupOutter.cs" />
+    <Compile Include="GroupOutter2.cs" />
+    <Compile Include="CJPlus\Application\Friends\Passive\IFriendsOutter.cs" />
+    <Compile Include="CJPlus\Application\FileTransfering\CbFileRequestReceived.cs" />
+    <Compile Include="CJPlus\Application\FileTransfering\IFile.cs" />
+    <Compile Include="CJPlus\Application\CustomizeInfo\ICustomizeHandler.cs" />
+    <Compile Include="CJPlus\Application\CustomizeInfo\IIntegratedCustomizeHandler.cs" />
+    <Compile Include="CJPlus\Application\CustomizeInfo\ComplexCustomizeHandler.cs" />
+    <Compile Include="CJPlus\Application\CustomizeInfo\BaseInformationTypes.cs" />
+    <Compile Include="IProcess.cs" />
+    <Compile Include="Class20.cs" />
+    <Compile Include="CJPlus\Advanced\GInterface3.cs" />
+    <Compile Include="CJPlus\Advanced\BaseOptions.cs" />
+    <Compile Include="CJPlus\Advanced\AdvancedOptions.cs" />
+    <Compile Include="Class21.cs" />
+    <Compile Include="CJPlus\Advanced\CustomizeInfoHandleMode.cs" />
+    <Compile Include="Interface13.cs" />
+    <Compile Include="Delegate0.cs" />
+    <Compile Include="CJFramework\Server\UserManagement\IUserManager.cs" />
+    <Compile Include="CJFramework\Server\UserManagement\RelogonMode.cs" />
+    <Compile Include="IFileOutter.cs" />
+    <Compile Include="Class22.cs" />
+    <Compile Include="CJPlus\FileTransceiver\FileTransDisrupttedType.cs" />
+    <Compile Include="CJPlus\FileTransceiver\CbFileSendedProgress.cs" />
+    <Compile Include="CJPlus\FileTransceiver\CbFileTransDisruptted.cs" />
+    <Compile Include="CJPlus\FileTransceiver\CbFileTransCompleted.cs" />
+    <Compile Include="Class23.cs" />
+    <Compile Include="Class24.cs" />
+    <Compile Include="CJPlus\Application\Friends\Server\GInterface4.cs" />
+    <Compile Include="Class25.cs" />
+    <Compile Include="CJPlus\Core\IMessageTypeRoom.cs" />
+    <Compile Include="CJPlus\Core\BaseMessageTypeRoom.cs" />
+    <Compile Include="CJPlus\Application\Friends\FriendsMessageTypeRoom.cs" />
+    <Compile Include="FileTransfer.cs" />
+    <Compile Include="Class29.cs" />
+    <Compile Include="CJFramework\NetServer.cs" />
+    <Compile Include="Class30.cs" />
+    <Compile Include="CJFramework\Engine\Udp\Reliable\IUdpSessionStateViewer.cs" />
+    <Compile Include="IPv6.cs" />
+    <Compile Include="IUdpSessionHelper.cs" />
+    <Compile Include="ReliableUdpEngine.cs" />
+    <Compile Include="Interface17.cs" />
+    <Compile Include="Interface18.cs" />
+    <Compile Include="Class32.cs" />
+    <Compile Include="IConnection.cs" />
+    <Compile Include="Interface20.cs" />
+    <Compile Include="BaseTcpEngine.cs" />
+    <Compile Include="WebSocketEngine.cs" />
+    <Compile Include="Class6.cs" />
+    <Compile Include="Class38.cs" />
+    <Compile Include="AgileTcpListener.cs" />
+    <Compile Include="ClientTimeEnum.cs" />
+    <Compile Include="CJPlus\Core\IServiceTypeNameMatcher.cs" />
+    <Compile Include="Class40.cs" />
+    <Compile Include="CJPlus\Core\DefaultServiceTypeNameMatcher.cs" />
+    <Compile Include="IHeader.cs" />
+    <Compile Include="Interface22.cs" />
+    <Compile Include="Class41.cs" />
+    <Compile Include="IP2PChannel.cs" />
+    <Compile Include="Interface24.cs" />
+    <Compile Include="P2PClass.cs" />
+    <Compile Include="CJPlus\Application\P2PSession\P2PSessionMessageTypeRoom.cs" />
+    <Compile Include="CJPlus\Application\Contacts\ContactsMessageTypeRoom.cs" />
+    <Compile Include="CJPlus\Application\CustomizeInfo\Passive\ICustomizeOutter.cs" />
+    <Compile Include="Class43.cs" />
+    <Compile Include="CJPlus\Application\CustomizeInfo\EmptyCustomizeHandler.cs" />
+    <Compile Include="CJPlus\Application\CustomizeInfo\HandingException.cs" />
+    <Compile Include="CJPlus\Application\CustomizeInfo\CallbackState!1.cs" />
+    <Compile Include="StreamTcpEngine.cs" />
+    <Compile Include="Interface25.cs" />
+    <Compile Include="CJFramework\Passive\ActionTypeOnNoP2PChannel.cs" />
+    <Compile Include="Class44.cs" />
+    <Compile Include="SDog.cs" />
+    <Compile Include="Struct0.cs" />
+    <Compile Include="Struct1.cs" />
+    <Compile Include="Enum1.cs" />
+    <Compile Include="Enum2.cs" />
+    <Compile Include="Class46!1.cs" />
+    <Compile Include="Class47.cs" />
+    <Compile Include="Interface26.cs" />
+    <Compile Include="CJFramework\Engine\Tcp\Passive\TcpEngine.cs" />
+    <Compile Include="PassiveTextTcpEngine.cs" />
+    <Compile Include="Class51.cs" />
+    <Compile Include="Class52.cs" />
+    <Compile Include="Class53.cs" />
+    <Compile Include="Class54.cs" />
+    <Compile Include="Class55.cs" />
+    <Compile Include="Class56.cs" />
+    <Compile Include="UdpChannelManager.cs" />
+    <Compile Include="CJPlus\Application\P2PSession\Passive\IP2PController.cs" />
+    <Compile Include="P2PController.cs" />
+    <Compile Include="Class59.cs" />
+    <Compile Include="CJPlus\Application\CustomizeInfo\BinaryInformationContract.cs" />
+    <Compile Include="CJPlus\Application\CustomizeInfo\ResGetTimeContract.cs" />
+    <Compile Include="CJPlus\Application\Contacts\Server\IContactsOutter.cs" />
+    <Compile Include="ContactsMessageHandler.cs" />
+    <Compile Include="CJPlus\Application\BlobFragmentContract.cs" />
+    <Compile Include="CJPlus\Application\BlobAndTagContract.cs" />
+    <Compile Include="MessageDispatcher.cs" />
+    <Compile Include="CJFramework\Server\UserManagement\IUserDisplayer.cs" />
+    <Compile Include="CJFramework\Server\UserManagement\EmptyUserDisplayer.cs" />
+    <Compile Include="CJFramework\Server\UserManagement\UserData.cs" />
+    <Compile Include="PassiveStreamTcpEngine.cs" />
+    <Compile Include="Class62.cs" />
+    <Compile Include="Class63.cs" />
+    <Compile Include="Enum3.cs" />
+    <Compile Include="CJPlus\Application\Basic\Server\IBasicHandler.cs" />
+    <Compile Include="CJPlus\Application\Group\Server\IGroupManager.cs" />
+    <Compile Include="CJPlus\Application\Friends\Server\IFriendsManager.cs" />
+    <Compile Include="CJPlus\Application\Contacts\Server\IContactsManager.cs" />
+    <Compile Include="Class64.cs" />
+    <Compile Include="Class65.cs" />
+    <Compile Include="CJPlus\Advanced\InformationStyle.cs" />
+    <Compile Include="CJPlus\Advanced\GInterface6.cs" />
+    <Compile Include="Class66.cs" />
+    <Compile Include="CJPlus\Advanced\InfoHandleRecord.cs" />
+    <Compile Include="CJPlus\Advanced\InfoHandleRecordStatistics.cs" />
+    <Compile Include="CJPlus\Advanced\ThreadPoolInfo.cs" />
+    <Compile Include="IHeader4.cs" />
+    <Compile Include="DotNETHeader.cs" />
+    <Compile Include="CJPlus\Core\StreamContratAttribute.cs" />
+    <Compile Include="CJPlus\Core\SerializeStrategy.cs" />
+    <Compile Include="CJPlus\Application\P2PSession\Passive\P2PChannelState.cs" />
+    <Compile Include="CJPlus\Application\Group\Server\DefaultGroupManager.cs" />
+    <Compile Include="FileMessage.cs" />
+    <Compile Include="Class71.cs" />
+    <Compile Include="Class72.cs" />
+    <Compile Include="Class73.cs" />
+    <Compile Include="Class74.cs" />
+    <Compile Include="Interface28.cs" />
+    <Compile Include="Interface29.cs" />
+    <Compile Include="TextTcpEngine.cs" />
+    <Compile Include="CJFramework\Core\ProtocolType.cs" />
+    <Compile Include="CJFramework\Core\MessageInvalidType.cs" />
+    <Compile Include="Interface30.cs" />
+    <Compile Include="Class75.cs" />
+    <Compile Include="CJPlus\Application\P2PSession\Passive\GClass0.cs" />
+    <Compile Include="CJPlus\Application\P2PSession\Passive\P2PChannelMode.cs" />
+    <Compile Include="CJPlus\Application\CustomizeInfo\AgileInformationSerializer.cs" />
+    <Compile Include="Class76.cs" />
+    <Compile Include="Contract.cs" />
+    <Compile Include="Class78.cs" />
+    <Compile Include="IActionType.cs" />
+    <Compile Include="Class79.cs" />
+    <Compile Include="Class80.cs" />
+    <Compile Include="BaseUdpEngine.cs" />
+    <Compile Include="Interface32.cs" />
+    <Compile Include="Class84.cs" />
+    <Compile Include="Class85.cs" />
+    <Compile Include="Class86.cs" />
+    <Compile Include="AuthorizeTool.cs" />
+    <Compile Include="CJPlus\GlobalUtil.cs" />
+    <Compile Include="DirectorySender.cs" />
+    <Compile Include="DirectoryReceiver.cs" />
+    <Compile Include="CJPlus\Application\P2PSession\ExpectedVacancyBodyContract.cs" />
+    <Compile Include="CJPlus\Application\P2PSession\P2PChannelReportContract.cs" />
+    <Compile Include="CJPlus\Application\P2PSession\P2PLogonContract.cs" />
+    <Compile Include="CJPlus\Application\P2PSession\PublicIPEResponseContract.cs" />
+    <Compile Include="CJPlus\Application\P2PSession\GClass1.cs" />
+    <Compile Include="CJPlus\Application\P2PSession\ReceiveP2PProbeNotifyContract.cs" />
+    <Compile Include="CJPlus\Application\P2PSession\ReqUserDataContract.cs" />
+    <Compile Include="CJPlus\Application\P2PSession\UserAddressInfo.cs" />
+    <Compile Include="CJPlus\Application\P2PSession\ResUserDataContract.cs" />
+    <Compile Include="CJPlus\Application\Contacts\Passive\IContactsOutter.cs" />
+    <Compile Include="CJPlus\Application\Group\BroadcastContract.cs" />
+    <Compile Include="CJPlus\Application\Group\GroupContract.cs" />
+    <Compile Include="CJPlus\Application\Group\Groupmates.cs" />
+    <Compile Include="CJPlus\Application\Group\GroupmatesContract.cs" />
+    <Compile Include="CJPlus\Application\Group\UserContract.cs" />
+    <Compile Include="CJPlus\Application\FileTransfering\Server\IFileController.cs" />
+    <Compile Include="Parameterized.cs" />
+    <Compile Include="Class90.cs" />
+    <Compile Include="CJPlus\Application\CustomizeInfo\Passive\ChannelMode.cs" />
+    <Compile Include="Enum4.cs" />
+    <Compile Include="Interface33.cs" />
+    <Compile Include="Class91.cs" />
+    <Compile Include="Class92.cs" />
+    <Compile Include="CJPlus\Rapid\IServerEngine.cs" />
+    <Compile Include="CJPlus\Rapid\WssOptions.cs" />
+    <Compile Include="IResumedProjectItemOutter.cs" />
+    <Compile Include="ResumedProjectItemOutter.cs" />
+    <Compile Include="CJPlus\FileTransceiver\ResumedProjectItem.cs" />
+    <Compile Include="IFilePackageHelper.cs" />
+    <Compile Include="Class69.cs" />
+    <Compile Include="CJPlus\Application\Basic\Server\IBasicController.cs" />
+    <Compile Include="CJPlus\Application\Basic\BasicMessageTypeRoom.cs" />
+    <Compile Include="Interface36.cs" />
+    <Compile Include="Class94.cs" />
+    <Compile Include="IMessageHandler.cs" />
+    <Compile Include="Message1.cs" />
+    <Compile Include="Interface38.cs" />
+    <Compile Include="Interface39.cs" />
+    <Compile Include="MessageForbiddenHandler.cs" />
+    <Compile Include="MessageForbiddenHandler2.cs" />
+    <Compile Include="UserManager.cs" />
+    <Compile Include="OnlineUsers.cs" />
+    <Compile Include="Class100.cs" />
+    <Compile Include="Class101!1.cs" />
+    <Compile Include="CJFramework\ServerConfiguration.cs" />
+    <Compile Include="CJFramework\NetworkHelper.cs" />
+    <Compile Include="Platform.cs" />
+    <Compile Include="Interface40.cs" />
+    <Compile Include="Interface41.cs" />
+    <Compile Include="ServerEngine.cs" />
+    <Compile Include="Class104.cs" />
+    <Compile Include="Class105.cs" />
+    <Compile Include="FilePackageHelper2.cs" />
+    <Compile Include="FileSender.cs" />
+    <Compile Include="CJPlus\FileTransceiver\TransferingProject.cs" />
+    <Compile Include="TcpPassiveEngine.cs" />
+    <Compile Include="WorkProcesser.cs" />
+    <Compile Include="CJPlus\Application\Basic\KickOutContract.cs" />
+    <Compile Include="CJPlus\Application\Basic\QueryIPEContract.cs" />
+    <Compile Include="CJPlus\Application\Basic\QueryOnlineContract.cs" />
+    <Compile Include="CJPlus\Application\Basic\ReqLogonContract.cs" />
+    <Compile Include="CJPlus\Application\Basic\LogonResponse.cs" />
+    <Compile Include="CJPlus\Application\Basic\LogonFullResponse.cs" />
+    <Compile Include="CJPlus\Application\Basic\ResLogonContract.cs" />
+    <Compile Include="CJPlus\Application\Basic\ResOnlineContract.cs" />
+    <Compile Include="CJPlus\Application\Basic\ResUsersContract.cs" />
+    <Compile Include="CJPlus\Application\Basic\UserIpeResContract.cs" />
+    <Compile Include="CJPlus\Application\Basic\CallClientContract.cs" />
+    <Compile Include="CJPlus\Application\Basic\NotifyContract.cs" />
+    <Compile Include="Class82.cs" />
+    <Compile Include="Class110.cs" />
+    <Compile Include="FilePackageHelper.cs" />
+    <Compile Include="CJPlus\Application\UIResultHandler.cs" />
+    <Compile Include="CJPlus\Application\UICallbackHandler.cs" />
+    <Compile Include="CJPlus\Application\Group\Server\IGroupOutter.cs" />
+    <Compile Include="CJPlus\Application\Friends\FriendNotifyContract.cs" />
+    <Compile Include="CJPlus\Application\Friends\ReqFriendsContract.cs" />
+    <Compile Include="CJPlus\Application\Friends\ResFriendsContract.cs" />
+    <Compile Include="IDateTime.cs" />
+    <Compile Include="Server.cs" />
+    <Compile Include="CJPlus\Application\CustomizeInfo\CustomizeMessageTypeRoom.cs" />
+    <Compile Include="CJPlus\Application\Contacts\Server\DefaultContactsManager.cs" />
+    <Compile Include="CJPlus\Application\Basic\Passive\IBasicOutter.cs" />
+    <Compile Include="BasicOutter.cs" />
+    <Compile Include="Interface43.cs" />
+    <Compile Include="Class83.cs" />
+    <Compile Include="Class7.cs" />
+    <Compile Include="MessageHandler.cs" />
+    <Compile Include="Class115.cs" />
+    <Compile Include="Class116.cs" />
+    <Compile Include="Class117.cs" />
+    <Compile Include="Class118.cs" />
+    <Compile Include="Class119.cs" />
+    <Compile Include="Class120.cs" />
+    <Compile Include="Enum5.cs" />
+    <Compile Include="RegularSender.cs" />
+    <Compile Include="RapidPassiveEngine.cs" />
+    <Compile Include="CJPlus\Rapid\IP2PServer.cs" />
+    <Compile Include="P2PServer.cs" />
+    <Compile Include="Class124.cs" />
+    <Compile Include="Class125.cs" />
+    <Compile Include="CJPlus\Application\Information.cs" />
+    <Compile Include="CJPlus\Application\BroadcastInformation.cs" />
+    <Compile Include="CJPlus\Application\Group\GroupMessageTypeRoom.cs" />
+    <Compile Include="FriendsOutter.cs" />
+    <Compile Include="Class70.cs" />
+    <Compile Include="ContactsOutter.cs" />
+    <Compile Include="CJPlus\Application\Contacts\BroadcastContract.cs" />
+    <Compile Include="CJPlus\Application\Contacts\GroupContract.cs" />
+    <Compile Include="CJPlus\Application\Contacts\Groupmates.cs" />
+    <Compile Include="CJPlus\Application\Contacts\GroupmatesContract.cs" />
+    <Compile Include="CJPlus\Application\Contacts\UserContract.cs" />
+    <Compile Include="CJPlus\Application\Contacts\ReqContactsContract.cs" />
+    <Compile Include="CJPlus\Application\Contacts\ResContactsContract.cs" />
+    <Compile Include="Delegate1.cs" />
+    <Compile Include="Interface44.cs" />
+    <Compile Include="Class128.cs" />
+    <Compile Include="Class129.cs" />
+    <Compile Include="Class130.cs" />
+    <Compile Include="ResumedProjectItemOutter2.cs" />
+    <Compile Include="Class132.cs" />
+    <Compile Include="CJPlus\Application\Friends\Server\EmptyFriendsManager.cs" />
+    <Compile Include="CJPlus\Application\Friends\Server\DefaultFriendsManager.cs" />
+    <Compile Include="CJPlus\Application\FileTransfering\Passive\IFileOutter.cs" />
+    <Compile Include="Class28.cs" />
+    <Compile Include="CJPlus\Application\FileTransfering\FileMessageTypeRoom.cs" />
+    <Compile Include="CJPlus\Application\FileTransfering\BeginSendFileContract.cs" />
+    <Compile Include="CJPlus\Application\FileTransfering\CancelFileContract.cs" />
+    <Compile Include="CJPlus\Application\FileTransfering\RejectOrAcceptFileContract.cs" />
+    <Compile Include="CJPlus\Application\FileTransfering\SingleFileNotifyContract.cs" />
+    <Compile Include="CJPlus\Application\Basic\Server\EmptyBasicHandler.cs" />
+    <Compile Include="CJPlus\Application\Basic\LogonResult.cs" />
+    <Compile Include="Interface45.cs" />
+    <Compile Include="Class133.cs" />
+    <Compile Include="CJFramework\Engine\Tcp\Passive\Sock5ProxyInfo.cs" />
+    <Compile Include="Class134.cs" />
+    <Compile Include="IStreamContractHelper1.cs" />
+    <Compile Include="Class16.cs" />
+    <Compile Include="CJFramework\Engine\ContractStyle\Stream\BaseSerializeContract.cs" />
+    <Compile Include="Enum6.cs" />
+    <Compile Include="CJFramework\Server\UserManagement\GInterface8.cs" />
+    <Compile Include="Class135.cs" />
+    <Compile Include="CJPlus\Serialization\GInterface9.cs" />
+    <Compile Include="CJPlus\Serialization\NotSerializedCompactlyAttribute.cs" />
+    <Compile Include="CJPlus\Serialization\BaseCompactSerializer.cs" />
+    <Compile Include="CJPlus\Serialization\SimpleFont.cs" />
+    <Compile Include="CJPlus\Serialization\CompactPropertySerializer.cs" />
+    <Compile Include="Class137.cs" />
+    <Compile Include="Class136.cs" />
+    <Compile Include="Class138.cs" />
+    <Compile Include="CJPlus\Serialization\SerializeException.cs" />
+    <Compile Include="CJPlus\FileTransceiver\SendingFileParas.cs" />
+    <Compile Include="CJPlus\FileTransceiver\FileTransferingProgress.cs" />
+    <Compile Include="CJPlus\FileTransceiver\FilePackage.cs" />
+    <Compile Include="CJPlus\FileTransceiver\PackageType.cs" />
+    <Compile Include="CJPlus\FileTransceiver\FoldTransferingNextFileInfo.cs" />
+    <Compile Include="GroupOutter.cs" />
+    <Compile Include="Class140.cs" />
+    <Compile Include="Class141.cs" />
+    <Compile Include="Class142.cs" />
+    <Compile Include="Class143.cs" />
+    <Compile Include="Class144.cs" />
+    <Compile Include="CJFramework\Server\UserManagement\P2PAddress.cs" />
+    <Compile Include="Enum7.cs" />
+    <Compile Include="CJFramework\Engine\Udp\Reliable\SessionClosedCause.cs" />
+    <Compile Include="Class145.cs" />
+    <Compile Include="IHeader1.cs" />
+    <Compile Include="IBody.cs" />
+    <Compile Include="Body.cs" />
+    <Compile Include="CJFramework\Engine\Udp\Reliable\MTUs.cs" />
+    <Compile Include="CJFramework\Engine\Udp\Reliable\OutUdpSessionState.cs" />
+    <Compile Include="CJFramework\Engine\Udp\Reliable\InUdpSessionState.cs" />
+    <Compile Include="IPEndPointBody.cs" />
+    <Compile Include="StringBody.cs" />
+    <Compile Include="CJFramework\Engine\Udp\Reliable\FeedbackVacancyBody.cs" />
+    <Compile Include="DataFragmentBody.cs" />
+    <Compile Include="Class151.cs" />
+    <Compile Include="DataFragmentType.cs" />
+    <Compile Include="CJException.cs" />
+    <Compile Include="DateTimeBody.cs" />
+    <Compile Include="Class153.cs" />
+    <Compile Include="Class154.cs" />
+    <Compile Include="Class155.cs" />
+    <Compile Include="Class156.cs" />
+    <Compile Include="Class157.cs" />
+    <Compile Include="CJFramework\AgileIPE.cs" />
+    <Compile Include="CJFramework\VersionType.cs" />
+    <Compile Include="CJFramework\ActionTypeOnChannelIsBusy.cs" />
+    <Compile Include="CJFramework\ClientType.cs" />
+    <Compile Include="CustomizeProcess.cs" />
+    <Compile Include="Class159.cs" />
+    <Compile Include="Class160.cs" />
+    <Compile Include="CJFramework\PortListenerState.cs" />
+    <Compile Include="CJFramework\ListenerSubState.cs" />
+    <Compile Include="Class161!1.cs" />
+    <Compile Include="Class162.cs" />
+    <Compile Include="Class163.cs" />
+    <Compile Include="Class164.cs" />
+    <Compile Include="Class165.cs" />
+    <Compile Include="_Module_{A49204FD-9905-447E-84C1-8C08E69CBB5D}.cs" />
+    <Compile Include="Class166.cs" />
+    <EmbeddedResource Include="ESFramework.g.resources" />
+    <EmbeddedResource Include="aR3nbf8dQp2feLmk31.SplashForm.resources" />
+    <EmbeddedResource Include="aR3nbf8dQp2feLmk31.lSfgApatkdxsVcGcrktoFd.resources" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CJBasic\CJBasic.csproj">
+      <Project>{414e1d01-f1bd-4f9c-a00d-10549ee5db68}</Project>
+      <Name>CJBasic</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="CJFramework\Engine\Tcp\Passive\Stream\" />
+  </ItemGroup>
+</Project>

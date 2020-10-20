@@ -1,0 +1,818 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>DataRabbit</name>
+    </assembly>
+    <members>
+        <member name="T:DataRabbit.TimeScopeFilter">
+            <summary>
+            TimeScopeFilter 用于决定离当前时间以前N小时以内的记录都符合条件。
+            （1）ColumnValue是一个整数，表示有效期的小时数。
+            （2）ColumnName对应的字段类型一定是DateTime。
+            </summary>
+        </member>
+        <member name="T:DataRabbit.Filter">
+            <summary>
+            Filter 过滤数据的条件，内含一个Column的名和值以及比较操作符。
+            </summary>
+        </member>
+        <member name="T:DataRabbit.ColumnItem">
+            <summary>
+            ColumnItem 数据列及其对应的值。
+            </summary>
+        </member>
+        <member name="M:DataRabbit.Filter.GetBooleanExpression(DataRabbit.IParameterFormatter,System.Int32@,DataRabbit.FilterParameterCollection@)">
+            <summary>
+            GetBooleanExpression 根据当前的Filter创建BOOL表达式
+            </summary>        
+        </member>
+        <member name="M:DataRabbit.Filter.SelectFrom``2(ESBasic.Collections.SortedArray{``0,``1})">
+            <summary>
+            SelectFrom 从SortedList找出满足当前条件的TVal列表。
+            </summary>
+            <typeparam name="TKey">对应当前Filter表示的列的取值</typeparam>
+            <typeparam name="TVal">返回的列表中的元素类型</typeparam>    
+            <param name="sortedList">已经按TKey排好序的列表</param>
+        </member>
+        <member name="T:DataRabbit.Condition">
+            <summary>
+            Condition 用于协助Filter和GroupFilter完成条件判断。
+            </summary>
+        </member>
+        <member name="T:DataRabbit.IEntityModifier`1">
+            <summary>
+            IEntityModifier 对容器中的实体进行修改操作的统一访问接口。（容器可以是DB、Entity缓存、内存数据库等）
+            </summary>
+            <typeparam name="TEntity">实体的类型</typeparam>
+        </member>
+        <member name="M:DataRabbit.IEntityModifier`1.Insert(`0,System.Object@)">
+            <summary>
+            插入一个实体对象。如果主键为自增序列，则在返回之前将更新entity对应的字段，并out出主键值。
+            </summary>
+            <param name="entity">要插入的实体对象</param>
+            <param name="identity">自增主键的结果值</param>     
+        </member>
+        <member name="M:DataRabbit.IEntityModifier`1.Insert(`0)">
+            <summary>
+            插入一个实体对象。
+            </summary>
+        </member>
+        <member name="M:DataRabbit.IEntityModifier`1.Insert(System.Collections.Generic.ICollection{`0})">
+            <summary>
+            插入多个实体对象。
+            </summary>
+        </member>
+        <member name="M:DataRabbit.IEntityModifier`1.Update(System.Collections.Generic.ICollection{DataRabbit.ColumnUpdating},DataRabbit.Filter[])">
+            <summary>
+            更新符合conditions的记录中由updatings指定的各个Column为对应目标值。
+            </summary>
+            <param name="updatings">要更新的多个项目</param>
+            <param name="conditions">过滤条件,对多个Condition进行与操作</param>               
+        </member>
+        <member name="M:DataRabbit.IEntityModifier`1.Update(DataRabbit.ColumnUpdating,DataRabbit.Filter[])">
+            <summary>
+            更新符合conditions的记录中由columnItem指定的Column为对应目标值。
+            </summary>
+            <param name="columnUpdating">要更新的项目</param>
+            <param name="conditions">过滤条件,对多个Condition进行与操作</param>      
+        </member>
+        <member name="M:DataRabbit.IEntityModifier`1.Update(System.Collections.Generic.ICollection{DataRabbit.ColumnUpdating},DataRabbit.IFilterTree)">
+            <summary>
+            更新符合tree的记录中由updatings指定的各个Column为对应目标值。
+            </summary>
+            <param name="updatings">要更新的多个项目</param>
+            <param name="tree">过滤条件树</param>
+        </member>
+        <member name="M:DataRabbit.IEntityModifier`1.Update(`0)">
+            <summary>
+            依据主键值来查找目标记录并修改，所以不能修改Entity主键的值。
+            </summary>        
+        </member>
+        <member name="M:DataRabbit.IEntityModifier`1.Delete(System.Object)">
+            <summary>
+            根据主键值删除目标记录。
+            </summary>        
+        </member>
+        <member name="M:DataRabbit.IEntityModifier`1.Delete(DataRabbit.Filter[])">
+            <summary>
+            删除符合条件的记录。（对多个Condition进行与操作）
+            </summary> 
+        </member>
+        <member name="M:DataRabbit.IEntityModifier`1.Delete(DataRabbit.IFilterTree)">
+            <summary>
+            删除符合条件树的记录。
+            </summary>
+        </member>
+        <member name="T:DataRabbit.SingleGroupFilterTree">
+            <summary>
+            SingleGroupFilterTree 用于封装单个条件的GroupFilterTree。
+            </summary>
+        </member>
+        <member name="T:DataRabbit.IGroupFilterTree">
+            <summary>
+            IGroupFilterTree 由多个GroupFilter构成的分组条件树的基础接口。
+            zhuweisky 2009.09.02
+            </summary>
+        </member>
+        <member name="M:DataRabbit.IGroupFilterTree.GetHavingStatement(DataRabbit.IParameterFormatter,System.Int32@,System.Collections.Generic.IList{DataRabbit.FilterParameterCollection}@)">
+            <summary>
+            GetHavingStatement 获取T-SQL的having字句。
+            </summary>      
+        </member>
+        <member name="T:DataRabbit.GroupFilter">
+            <summary>
+            GroupFilter 过滤分组的条件。
+            </summary>
+        </member>
+        <!-- 对于成员“T:DataRabbit.ComplexGroupFilterTree”忽略有格式错误的 XML 注释 -->
+        <member name="T:DataRabbit.IFilterTree">
+            <summary>
+            IFilterTree 用于表示多个Filter的逻辑组合的条件树。
+            </summary>
+        </member>
+        <member name="M:DataRabbit.IFilterTree.Predicate``1(``0,ESBasic.Emit.ForEntity.IPropertyQuicker{``0})">
+            <summary>
+            Predicate 验证obj是否符合该Tree所要求的逻辑条件。
+            </summary>    
+        </member>
+        <member name="M:DataRabbit.IFilterTree.GetBooleanExpression(DataRabbit.IParameterFormatter,System.Int32@,System.Collections.Generic.IList{DataRabbit.FilterParameterCollection}@)">
+            <summary>
+            GetBooleanExpression 获取组合后的逻辑表达式
+            </summary>              
+            <param name="nextParaIndex">依据Index对参数进行编号，防止参数名同名</param>       
+        </member>
+        <member name="T:DataRabbit.FilterParameter">
+            <summary>
+            FilterParameter 用于针对具体数据库类型的sql参数名称和值的封装。
+            </summary>
+        </member>
+        <member name="P:DataRabbit.FilterParameter.Name">
+            <summary>
+            Name 参数名称，带前缀@的
+            </summary>
+        </member>
+        <member name="T:DataRabbit.FilterParameterCollection">
+            <summary>
+            FilterParameterCollection 
+            </summary>
+        </member>
+        <member name="T:DataRabbit.Application.Log.SecurityOperationTableLogger">
+            <summary>
+            用于将安全操作日志记录到数据表【SecurityOperation】中。（可以是物理数据库中的数据表、也可是内存数据库中的数据表）。
+            </summary>
+        </member>
+        <member name="P:DataRabbit.Application.Log.SecurityOperationTableLogger.AgileLogger">
+            <summary>
+            当将SecurityOperation对象插入到数据表出错时，将使用agileLogger记录该错误。
+            </summary>
+        </member>
+        <member name="P:DataRabbit.Application.Log.SecurityOperationTableLogger.SecurityOperationAccesser">
+            <summary>
+            用于将SecurityOperation对象插入到数据表的访问器。
+            </summary>
+        </member>
+        <member name="P:DataRabbit.Application.Log.SecurityOperationTableLogger.ApplicationID">
+            <summary>
+            当前应用程序的标志。
+            </summary>
+        </member>
+        <member name="T:DataRabbit.IEntityAccesser`1">
+            <summary>
+            IEntityAccesser 用于统合针对数据设备的CRUD操作。
+            </summary>  
+        </member>
+        <member name="T:DataRabbit.IEntityQuerist`1">
+            <summary>
+            对容器中的Entity进行查询的统一访问接口。（容器可以是DB、Entity缓存、内存数据库等）
+            </summary>
+            <typeparam name="TEntity">实体的类型</typeparam>
+        </member>
+        <member name="M:DataRabbit.IEntityQuerist`1.GetCount(DataRabbit.Filter[])">
+            <summary>
+            统计符合条件的记录数（对多个Condition进行与操作）。谨慎调用带参数的GetCount方法，因为每调用一次都会重新统计一次，消耗性能。
+            </summary>
+        </member>
+        <member name="M:DataRabbit.IEntityQuerist`1.GetCount(DataRabbit.IFilterTree)">
+            <summary>
+            统计符合条件的记录数。谨慎调用带参数的GetCount方法，因为每调用一次都会重新统计一次，消耗性能。
+            </summary>
+        </member>
+        <member name="M:DataRabbit.IEntityQuerist`1.GetCount">
+            <summary>
+            统计记录总数。谨慎调用带参数的GetCount方法，因为每调用一次都会重新统计一次，消耗性能。
+            </summary>
+        </member>
+        <member name="M:DataRabbit.IEntityQuerist`1.GetOne(DataRabbit.Filter[])">
+            <summary> 
+            返回符合条件的第一个Entity（对多个Condition进行与操作）。
+            </summary>       
+        </member>
+        <member name="M:DataRabbit.IEntityQuerist`1.GetOne(DataRabbit.IFilterTree)">
+            <summary> 
+            返回符合条件的第一个Entity。
+            </summary>  
+        </member>
+        <member name="M:DataRabbit.IEntityQuerist`1.GetOne(System.Object)">
+            <summary>
+            根据主键ID获取Entity对象
+            </summary>       
+        </member>
+        <member name="M:DataRabbit.IEntityQuerist`1.GetColumnValue(System.Object,System.String)">
+            <summary>
+            依据主键找到目标记录的columnName列的值。如果目标记录不存在或这目标列为null，则返回null。
+            </summary>       
+        </member>
+        <member name="M:DataRabbit.IEntityQuerist`1.GetAll">
+            <summary>
+            获取所有的实体的列表。
+            </summary>        
+        </member>
+        <member name="M:DataRabbit.IEntityQuerist`1.GetMuch(DataRabbit.Filter[])">
+            <summary>
+            获取满足条件的实体的列表（对多个Condition进行与操作）。
+            </summary>    
+        </member>
+        <member name="M:DataRabbit.IEntityQuerist`1.GetMuch(DataRabbit.IFilterTree)">
+            <summary>
+            获取满足条件的实体的列表。
+            </summary> 
+        </member>
+        <member name="M:DataRabbit.IEntityQuerist`1.GetMuch(DataRabbit.IFilterTree,System.Nullable{System.Int32},DataRabbit.Orderby[])">
+            <summary>
+            获取满足条件的实体的排序列表。
+            </summary>
+            <param name="tree">过滤的条件树</param>
+            <param name="topN">返回前多少个实体，如果为null，表示返回符合条件的所有结果</param>
+            <param name="orderbyAry">排序规则</param>        
+        </member>
+        <member name="M:DataRabbit.IEntityQuerist`1.GetMuch(DataRabbit.IFilterTree,DataRabbit.Groupby,System.Nullable{System.Int32},DataRabbit.Orderby[])">
+            <summary>
+            获取满足条件的实体的排序列表。
+            </summary>
+            <param name="tree">过滤的条件树</param>
+            <param name="groupby">在过滤的条件树的基础上再加上组的聚合值过滤条件</param>
+            <param name="topN">返回前多少个实体，如果为null，表示返回符合条件的所有结果</param>
+            <param name="orderbyAry">排序规则</param>    
+        </member>
+        <member name="M:DataRabbit.IEntityQuerist`1.GetDistinctList``1(System.String,DataRabbit.Filter[])">
+            <summary>
+            查询满足条件的记录中某个列的所有存在值的列表。
+            </summary>       
+        </member>
+        <member name="M:DataRabbit.IEntityQuerist`1.GetDistinctList``1(System.String,DataRabbit.IFilterTree)">
+            <summary>
+            查询满足条件的记录中某个列的所有存在值的列表。
+            </summary>
+        </member>
+        <member name="M:DataRabbit.IEntityQuerist`1.GetDistinctList``1(System.String)">
+            <summary>
+            查询所有记录中的某个列的所有存在值的列表。
+            </summary>
+        </member>
+        <member name="M:DataRabbit.IEntityQuerist`1.GetAggregateValue``1(DataRabbit.AggregateQueryType,System.String,DataRabbit.Filter[])">
+            <summary>
+            对满足条件的记录进行聚合查询，比如count，max，sum等。如果没有满足条件的记录，则返回default(T)。
+            </summary>
+            <typeparam name="T">聚合实体的类型</typeparam>
+            <param name="queryType">聚合查询的类型</param>
+            <param name="columnName">聚合查询的目标列</param>
+            <param name="conditions">过滤条件</param>        
+        </member>
+        <member name="M:DataRabbit.IEntityQuerist`1.GetAggregateValue``1(DataRabbit.AggregateQueryType,System.String,DataRabbit.IFilterTree)">
+            <summary>
+            对满足条件的记录进行聚合查询，比如count，max，sum等。如果没有满足条件的记录，则返回default(T)。
+            </summary>
+            <typeparam name="T">聚合实体的类型</typeparam>
+            <param name="queryType">聚合查询的类型</param>
+            <param name="columnName">聚合查询的目标列</param>
+            <param name="tree">过滤条件树</param>    
+        </member>
+        <member name="M:DataRabbit.IEntityQuerist`1.GetAggregateValue``1(DataRabbit.AggregateQueryType,System.String)">
+            <summary>
+            对所有记录进行聚合查询，比如count，max，sum等。如果没有满足条件的记录，则返回default(T)。
+            </summary>
+            <typeparam name="T">聚合实体的类型。</typeparam>
+            <param name="queryType">聚合查询的类型</param>
+            <param name="columnName">聚合查询的目标列</param>
+        </member>
+        <member name="M:DataRabbit.IEntityQuerist`1.GetAggregateVal(DataRabbit.AggregateQueryType,System.String,DataRabbit.IFilterTree)">
+            <summary>
+            聚合查询，如果没有满足条件的记录，则返回null。
+            </summary>   
+        </member>
+        <member name="M:DataRabbit.IEntityQuerist`1.GetAggregateValue(System.Collections.Generic.IDictionary{System.String,DataRabbit.AggregateQuery},DataRabbit.IFilterTree)">
+            <summary>
+            GetAggregateValue 同时进行多个聚合值查询。aggregateQueryItems的key为聚合查询的项目名称，与返回的字典中的key完全一致。
+            如果没有满足条件的记录，则返回的字典为null。
+            </summary>       
+        </member>
+        <member name="M:DataRabbit.IEntityQuerist`1.GetAggregateEntity``1(System.Collections.Generic.IDictionary{System.String,DataRabbit.AggregateQuery},DataRabbit.IFilterTree)">
+            <summary>
+            获取由聚合查询返回聚合值构成的实体对象。
+            如果没有满足条件的记录，则返回default(TAggregateEntity)。
+            TAggregateEntity的定义至少包含了各个聚合查询项目的名称的属性。
+            </summary>       
+        </member>
+        <member name="M:DataRabbit.IEntityQuerist`1.GetAggregateEntityList``1(DataRabbit.Groupby,System.Collections.Generic.IDictionary{System.String,DataRabbit.AggregateQuery},DataRabbit.IFilterTree,DataRabbit.Orderby[])">
+            <summary>
+            获取由分组查询返回的聚合值构成的实体对象列表。
+            TAggregateEntity的定义至少包含了分组依据列和各个聚合查询项目的名称的属性。
+            </summary>       
+        </member>
+        <member name="M:DataRabbit.IEntityQuerist`1.GetGroupKeyList``1(DataRabbit.Groupby,DataRabbit.IFilterTree)">
+            <summary>
+            获取符合条件的分组的标志值列表。
+            </summary>
+            <typeparam name="TColumnGroupby">分组依据列的类型</typeparam>        
+        </member>
+        <member name="M:DataRabbit.IEntityQuerist`1.GetAggregateValueOfGroup``1(DataRabbit.Groupby,System.Collections.Generic.IDictionary{System.String,DataRabbit.AggregateQuery},DataRabbit.IFilterTree)">
+            <summary>
+            分组的多个聚合值查询。
+            </summary>
+            <typeparam name="TColumnGroupby">分组依据列的类型</typeparam>
+            <param name="groupby">分组过滤条件</param>
+            <param name="aggregateQueryItems">聚合查询字典，key为聚合查询项目名称</param>       
+            <returns>key为分组依据列的值，二级key为聚合查询项目名称，与输入参数完全匹配</returns>
+        </member>
+        <member name="M:DataRabbit.IEntityQuerist`1.GetPage(System.Int32,System.Int32,System.String,System.Boolean,System.Int32@,DataRabbit.Filter[])">
+            <summary>
+            获取分页记录。Filter的顺序需要与Index一致，分页才高效。
+            </summary>
+            <param name="pageSize">分页的大小</param>
+            <param name="pageIndex">要查询目标页的索引</param>
+            <param name="columnOrderby">要进行排序的列，如果传入null，表示不进行排序</param>
+            <param name="ascend">排序规则：升序，降序</param>
+            <param name="entityCount">满足条件的总的实体数量</param>
+            <param name="conditions">过滤条件</param>        
+        </member>
+        <member name="M:DataRabbit.IEntityQuerist`1.GetPage(System.Int32,System.Int32,System.String,System.Boolean,System.Int32@)">
+            <summary>
+            获取分页记录。
+            </summary>
+            <param name="pageSize">分页的大小</param>
+            <param name="pageIndex">要查询目标页的索引</param>
+            <param name="columnOrderby">要进行排序的列，如果传入null，表示不进行排序</param>
+            <param name="ascend">排序规则：升序，降序</param>
+            <param name="entityCount">总的实体数量</param>        
+        </member>
+        <member name="M:DataRabbit.IEntityQuerist`1.GetPage(DataRabbit.IFilterTree,System.Int32,System.Int32,System.String,System.Boolean,System.Int32@)">
+            <summary>
+            获取分页记录。IFilterTree中的Filter的顺序需要与Index一致，分页才高效。
+            </summary>
+            <param name="tree">过滤条件树</param>   
+            <param name="pageSize">分页的大小</param>
+            <param name="pageIndex">要查询目标页的索引</param>
+            <param name="columnOrderby">要进行排序的列，如果传入null，表示不进行排序</param>
+            <param name="ascend">排序规则：升序，降序</param>
+            <param name="entityCount">满足条件的总的实体数量</param>  
+        </member>
+        <member name="M:DataRabbit.IEntityQuerist`1.GetPage(DataRabbit.PageQuery)">
+            <summary>
+            分页查询。
+            </summary>
+            <param name="query">分页查询的相关参数封装，可包含携带查询</param>
+            <returns>查询结果</returns>
+        </member>
+        <member name="T:DataRabbit.SimpleGroupFilterTree">
+            <summary>
+            SimpleGroupFilterTree 由多个GroupFilter进行全与或全或逻辑运算构成的分组条件树
+            </summary>
+        </member>
+        <member name="T:DataRabbit.Orderby">
+            <summary>
+            Orderby 指明要按哪个字段进行排序（升序？降序？）
+            </summary>
+        </member>
+        <member name="P:DataRabbit.Orderby.Column">
+            <summary>
+            Column 返回的结果按照哪个列进行排序。
+            </summary>
+        </member>
+        <member name="P:DataRabbit.Orderby.Ascend">
+            <summary>
+            Ascend 排序结果采用升序还是降序？
+            </summary>
+        </member>
+        <member name="T:DataRabbit.SingleFilterTree">
+            <summary>
+            SingleFilterTree 由单个Filter构成的条件树。
+            </summary>
+        </member>
+        <member name="T:DataRabbit.Application.AsynEntityModify.EntityModifyType">
+            <summary>
+            对实体的修改类型
+            </summary>
+        </member>
+        <member name="T:DataRabbit.Application.EntityClassify.EntitySegmentContainer`3">
+            <summary>
+            EntitySegmentContainer 存放EntitySegment对象的容器，并提供了对容器内所有EntitySegment对象的聚合值进行加总的计算。
+            (1)可以将一个分页查询所涉及到的所有EntitySegment放到一个EntitySegmentContainer对象内，整合后提取某页。
+            (2)如果EntitySegment为closed，则CountDistinct的结果将不准确。
+            zhuweisky 2010.04.08
+            </summary>
+            <typeparam name="TSegmentID">片段ID的类型</typeparam>
+            <typeparam name="TEntity">Entity类型</typeparam>
+            <typeparam name="TPKey">Entity主键的类型</typeparam>    
+        </member>
+        <member name="M:DataRabbit.Application.EntityClassify.EntitySegmentContainer`3.GetAggregateValues(System.Collections.Generic.IDictionary{System.String,DataRabbit.AggregateQuery})">
+            <summary>
+            对容器内的所有片段进行加总统计聚合值。
+            </summary>
+            <param name="aggregateQueryItems">必须与EntitySegment的构造参数一致，或为其子集。</param>
+            <returns>如果容器内没有任何片段，则返回null。此时，调用方可能要自己构造默认的聚合结果。</returns>       
+        </member>
+        <member name="T:DataRabbit.PageQuery">
+            <summary>
+            PageQuery 分页查询的条件。
+            </summary>
+        </member>
+        <member name="M:DataRabbit.PageQuery.IsOnlyCountQueryInCarried(System.String@)">
+            <summary>
+            IsOnlyCountQueryInCarried 携带的聚合查询中，是否只有Count查询
+            </summary>        
+        </member>
+        <member name="P:DataRabbit.PageQuery.FilterTree">
+            <summary>
+            FilterTree 过滤数据的条件。
+            </summary>
+        </member>
+        <member name="P:DataRabbit.PageQuery.PageSize">
+            <summary>
+            PageSize 分页的大小。
+            </summary>
+        </member>
+        <member name="P:DataRabbit.PageQuery.PageIndex">
+            <summary>
+            PageIndex 要获取第几页的记录。
+            </summary>
+        </member>
+        <member name="P:DataRabbit.PageQuery.OrderbyList">
+            <summary>
+            ColumnOrderby 返回的结果按照哪些列进行排序。如果长度为0，表示不需要排序。
+            </summary>
+        </member>
+        <member name="P:DataRabbit.PageQuery.CarriedAggregateQueryDictionary">
+            <summary>
+            CarriedAggregateQueryDictionary 携带的聚合查询项目的字典（针对所有满足FilterTree的记录）。键表示聚合查询返回的的结果的命名（如"SumScore"，不可重复），值表示聚合查询项目。
+            </summary>
+        </member>
+        <member name="T:DataRabbit.Application.AsynEntityModify.EntityModifyAction">
+            <summary>
+            对实体修改动作的封装。command模式。
+            </summary>
+        </member>
+        <member name="P:DataRabbit.Application.AsynEntityModify.EntityUpdateAction`1.TargetEntity">
+            <summary>
+            要Update的目标entity，如果为null，则采用ColumnUpdating属性进行更新。
+            </summary>
+        </member>
+        <member name="P:DataRabbit.Application.AsynEntityModify.EntityDeleteAction`1.TargetID">
+            <summary>
+            要Delete的目标entity的ID，如果为null，则采用FilterTree属性进行更新。
+            </summary>
+        </member>
+        <member name="T:DataRabbit.Application.Log.AppExceptionTableLogger">
+            <summary>
+            用于将应用程序的错误日志记录到数据表【AppException】中。（可以是物理数据库中的数据表、也可是内存数据库中的数据表）。
+            </summary>
+        </member>
+        <member name="P:DataRabbit.Application.Log.AppExceptionTableLogger.AgileLogger">
+            <summary>
+            当将AppError对象插入到数据表出错时，将使用agileLogger记录该错误。
+            </summary>
+        </member>
+        <member name="P:DataRabbit.Application.Log.AppExceptionTableLogger.AppErrorAccesser">
+            <summary>
+            用于将AppError对象插入到数据表的访问器。
+            </summary>
+        </member>
+        <member name="P:DataRabbit.Application.Log.AppExceptionTableLogger.ApplicationID">
+            <summary>
+            当前应用程序的标志。
+            </summary>
+        </member>
+        <member name="M:DataRabbit.FilterHelper.PredicateComparison(System.IComparable,System.Object,DataRabbit.ComparisonOperators)">
+            <summary>
+            PredicateComparison 判断(first)comparisonOperator(second)是否成立
+            </summary>       
+        </member>
+        <member name="M:DataRabbit.FilterHelper.EnsureColumnValueOfFilter(System.Object,DataRabbit.ComparisonOperators)">
+            <summary>
+            EnsureColumnValueOfFilter 确保colVal满足Filter.ColumnValue所要求的。
+            </summary>        
+        </member>
+        <member name="M:DataRabbit.FilterHelper.GetScopeOfBetweenFilter(System.Collections.IEnumerable,System.IComparable@,System.IComparable@)">
+            <summary>
+            GetScopeOfBetweenFilter 当Filter的比较符为BetweenAnd时，从ColumnValue中分解处min和max
+            </summary>      
+        </member>
+        <member name="T:DataRabbit.Application.EntityClassify.EntitySegment`3">
+            <summary>
+            EntitySegment 用于存储属于当前片段的所有Entity的主键值，以及相关的聚合值。
+            zhuweisky 2010.04.08
+            </summary>
+            <typeparam name="TSegmentID">片段ID的类型</typeparam>
+            <typeparam name="TEntity">Entity类型</typeparam>
+            <typeparam name="TPKey">Entity主键的类型</typeparam>
+        </member>
+        <!-- 对于成员“F:DataRabbit.Application.EntityClassify.EntitySegment`3.aggregateQueryResults”忽略有格式错误的 XML 注释 -->
+        <member name="M:DataRabbit.Application.EntityClassify.EntitySegment`3.#ctor(`0,System.Collections.Generic.IDictionary{System.String,DataRabbit.AggregateQuery})">
+            <summary>
+            EntitySegment的构造参数。
+            </summary>
+            <param name="_id">片段的ID</param>
+            <param name="_aggregateQueryItems">要进行聚合求职的项目</param>
+        </member>
+        <member name="M:DataRabbit.Application.EntityClassify.EntitySegment`3.Close">
+            <summary>
+            Close 关闭片段。片段关闭后，将不再接收新的Entity对象加入。
+            当需要序列化存储当前片段时，可以先调用该方法关闭片段，以减小序列化后的尺寸。
+            </summary>
+        </member>
+        <member name="M:DataRabbit.Application.EntityClassify.EntitySegment`3.MergeEntitySegments(System.Collections.Generic.ICollection{DataRabbit.Application.EntityClassify.EntitySegment{`0,`1,`2}},System.Collections.Generic.IDictionary{System.String,DataRabbit.AggregateQuery},System.Boolean)">
+            <summary>
+            MergeEntitySegments 将多个entity对象片段的内容合并为一个新的entity对象片段。        
+            </summary> 
+        </member>
+        <member name="P:DataRabbit.Application.EntityClassify.EntitySegment`3.Closed">
+            <summary>
+            Closed 片段是否已经关闭。片段关闭后，将不再接收新的Entity对象加入。
+            另外，如果Closed为false，则aggregateQueryResults中存储的AggregateQueryType.CountDistinct聚合值为区分之列表，否则为区分值个数。
+            </summary>
+        </member>
+        <member name="T:DataRabbit.Groupby">
+            <summary>
+            Groupby 分组依据。
+            </summary>
+        </member>
+        <member name="T:DataRabbit.ColumnUpdating">
+            <summary>
+            ColumnUpdating 要更新的数据列及其对应的值（可以是增量）。
+            </summary>
+        </member>
+        <member name="M:DataRabbit.ColumnUpdating.GetExpression(DataRabbit.IParameterFormatter,System.Int32@,DataRabbit.FilterParameterCollection@)">
+            <summary>
+            GetExpression 根据当前的ColumnUpdating创建Set表达式
+            </summary>        
+        </member>
+        <member name="T:DataRabbit.Application.Log.AppException">
+            <summary>
+            用于记录应用程序异常的数据表所对应的Entity定义。
+            对应的Sql语句为：
+            CREATE TABLE [AppException]
+            ([AutoID] [int] IDENTITY(1,1) NOT FOR REPLICATION NOT NULL, [ApplicationID] [varchar](10) NOT NULL,
+            [ExceptionType] [varchar](20) NOT NULL,[ErrorMessage] [varchar](200) NOT NULL,[ErrorLevel] [nvarchar](10) NOT NULL,
+            [Location] [varchar](100) NOT NULL,[ArgumentInfo] [varchar](200) NOT NULL,[OccureTime] [datetime] NOT NULL 
+            CONSTRAINT [PK_AppException] PRIMARY KEY CLUSTERED ([AutoID] ASC))
+            </summary>
+        </member>
+        <member name="P:DataRabbit.Application.Log.AppException.ApplicationID">
+            <summary>
+            出现异常的应用程序的标志。
+            </summary>
+        </member>
+        <member name="P:DataRabbit.Application.Log.AppException.ExceptionType">
+            <summary>
+            异常的类型。如NullObjectReference。
+            </summary>
+        </member>
+        <member name="P:DataRabbit.Application.Log.AppException.ErrorMessage">
+            <summary>
+            异常的详细信息。
+            </summary>
+        </member>
+        <member name="P:DataRabbit.Application.Log.AppException.ErrorLevel">
+            <summary>
+            异常的级别 -- 高、中、低。
+            </summary>
+        </member>
+        <member name="P:DataRabbit.Application.Log.AppException.Location">
+            <summary>
+            出现异常的具体位置，精确到方法名称。
+            </summary>
+        </member>
+        <member name="P:DataRabbit.Application.Log.AppException.ArgumentInfo">
+            <summary>
+            抛出异常时方法的调用参数信息。
+            </summary>
+        </member>
+        <member name="P:DataRabbit.Application.Log.AppException.OccureTime">
+            <summary>
+            异常发生的时间。
+            </summary>
+        </member>
+        <member name="T:DataRabbit.SimpleFilterTree">
+            <summary>
+            FilterTree 最简单的IFilterTree实现，仅仅支持要么全"and"、要么全"or"的条件逻辑组合
+            zhuweisky 2007.03.20
+            </summary>
+        </member>
+        <!-- 对于成员“T:DataRabbit.ComplexFilterTree”忽略有格式错误的 XML 注释 -->
+        <member name="T:DataRabbit.IEntity`1">
+            <summary>
+            IEntity  实体的基础接口，该接口不是必须的。
+            如果要使用DataRabbit.Containers中提供的Entity缓存功能或内存数据库的功能，则该接口是必须实现的。
+            接口的背后含义：Entity有唯一ID，或者，目标数据表必须有主键，且有唯一的主键（单值主键），不能为联合主键。
+            </summary>
+            <typeparam name="TPKey">主键的类型</typeparam>
+        </member>
+        <!-- 对于成员“T:DataRabbit.AgileFilterTree”忽略有格式错误的 XML 注释 -->
+        <!-- 对于成员“M:DataRabbit.AgileFilterTree.#ctor(System.Collections.Generic.IDictionary{System.String,DataRabbit.Filter},System.String)”忽略有格式错误的 XML 注释 -->
+        <member name="T:DataRabbit.Application.EntityClassify.EntityClassifier`3">
+            <summary>
+            EntityClassifier 用于根据属性(columns4Classify)的值将Entity对象分类到对应的EntitySegment中，并实时计算所需的聚合值。
+            特别要注意的是，EntityClassifier使用了Emit生成实体分类器类型，所以，如果EntityClassifier将被序列化存储，则在反序列化加载之前，
+            必须先调用DynamicObjectClassifierFactory.CreateObjectClassifier()在内存中创建正确的实体分类器类型，否则，反序列化将失败。   
+            zhuweisky 2010.04.10
+            </summary>   
+            <typeparam name="TSegmentID">片段ID的类型</typeparam>
+            <typeparam name="TEntity">Entity类型</typeparam>
+            <typeparam name="TPKey">Entity主键的类型</typeparam>
+        </member>
+        <member name="M:DataRabbit.Application.EntityClassify.EntityClassifier`3.GetEntitySegment(`0,System.Object[])">
+            <summary>
+            GetEntitySegment 根据一组分类的属性值进行匹配以获取对应的实体片段。 如果参数中某个属性值为null，表示可以匹配所有实体对象。
+            如果某个参数的值为null，则会将返回的多个实体片段合并为一个。
+            </summary>     
+        </member>
+        <member name="M:DataRabbit.Application.EntityClassify.EntityClassifier`3.CloseAllEntitySegment">
+            <summary>
+            CloseAllEntitySegment 关闭所有的片段。关闭之后，将不再接受新的entity对象的加入。
+            </summary>
+        </member>
+        <member name="P:DataRabbit.Application.EntityClassify.EntityClassifier`3.AsendSortPKeyOnMerge">
+            <summary>
+            AsendSortPKeyOnMerge 在合并多个EntitySegment时，将合并后的主键值是按升序排序(true)还是按降序排序(false)。
+            </summary>
+        </member>
+        <member name="T:DataRabbit.AggregateQueryType">
+            <summary>
+            AggregateQueryType 聚合查询的类型。如max/min/sum/avg等等
+            </summary>
+        </member>
+        <member name="F:DataRabbit.AggregateQueryType.Count">
+            <summary>
+            统计个数。
+            </summary>
+        </member>
+        <member name="F:DataRabbit.AggregateQueryType.CountDistinct">
+            <summary>
+            统计区分值的个数。
+            </summary>
+        </member>
+        <member name="F:DataRabbit.AggregateQueryType.Max">
+            <summary>
+            获取最大值。
+            </summary>
+        </member>
+        <member name="F:DataRabbit.AggregateQueryType.Min">
+            <summary>
+            获取最小值。
+            </summary>
+        </member>
+        <member name="F:DataRabbit.AggregateQueryType.Sum">
+            <summary>
+            统计总和。
+            </summary>
+        </member>
+        <member name="F:DataRabbit.AggregateQueryType.Avg">
+            <summary>
+            统计平均值。
+            </summary>
+        </member>
+        <member name="T:DataRabbit.AggregateQuery">
+            <summary>
+            AggregateQuery 聚合查询项目。
+            </summary>
+        </member>
+        <member name="T:DataRabbit.Application.AsynEntityModify.AsynEntityModifier`1">
+            <summary>
+            用于将修改实体的动作放到后台队列中执行，当前调用可立即返回。
+            zhuweisky 2011.01.10
+            </summary>    
+        </member>
+        <member name="P:DataRabbit.Application.AsynEntityModify.AsynEntityModifier`1.RealEntityModifier">
+            <summary>
+            真正对实体进行修改的修改器。
+            </summary>
+        </member>
+        <member name="P:DataRabbit.Application.AsynEntityModify.AsynEntityModifier`1.WorkerThreadCount">
+            <summary>
+            执行实际实体修改动作的线程个数。默认值为1。如果需要严格按照调用的顺序执行修改动作，则该属性最好设为1。
+            </summary>
+        </member>
+        <member name="T:DataRabbit.Service.IEntityContainerProvider">
+            <summary>
+            IEntityContainerProvider 用于提供实体容器给客户端（可能为Remoting）使用。
+            内存数据库服务器（包括Master和Slave）和实体缓存服务器都发布了该接口的Remoting服务。
+            当后台有多个数据源时，可以调用带有参数的重载方法。如果仍然调用不带参数的方法，则返回第一个包含目标表的数据源访问器。
+            </summary>
+        </member>
+        <member name="M:DataRabbit.Service.IEntityContainerProvider.GetEntityAccesser``1">
+            <summary>
+            GetEntityAccesser 如果目标实体容器是只读的，该方法将返回null。
+            </summary>     
+        </member>
+        <member name="M:DataRabbit.Service.IEntityContainerProvider.GetEntityAccesser``1(System.String)">
+            <summary>
+            GetEntityAccesser 如果目标实体容器是只读的，该方法将返回null。
+            </summary>     
+        </member>
+        <member name="T:DataRabbit.PageQueryResult`1">
+            <summary>
+            PageQueryResult 分页查询的结果。
+            注意：它同时也可以作为整页缓存的单位，进行整页缓存，此时，GetPart便是从整页中获取一部分作为分页。
+            </summary>
+        </member>
+        <member name="F:DataRabbit.PageQueryResult`1.carriedAggregateQueryResult">
+            <summary>
+            carriedAggregateQueryResult 携带的聚合查询项目的结果。键表示聚合查询返回的结果的命名（与查询参数PageQuery.CarriedAggregateQueryDictionary一致），值表示聚合查询的结果。
+            </summary>
+        </member>
+        <member name="M:DataRabbit.PageQueryResult`1.AddAggregateQueryResult(System.String,System.Object)">
+            <summary>
+            AddAggregateQueryResult 添加所携带的聚合查询项目的结果。
+            </summary>  
+        </member>
+        <member name="M:DataRabbit.PageQueryResult`1.GetAggregateQueryResult(System.String)">
+            <summary>
+            GetAggregateQueryResult 获取所携带的聚合查询项目的结果。
+            </summary>       
+        </member>
+        <member name="M:DataRabbit.PageQueryResult`1.GetPart(System.Int32,System.Int32)">
+            <summary>
+            GetPart 当前对象为整页时，该方法用于返回整页中的一个分页。
+            </summary>        
+        </member>
+        <member name="T:DataRabbit.IParameterFormatter">
+            <summary>
+            IParameterFormatter 将一个Filter转化为一个查询Sql条件时，需要用到的格式化器。
+            </summary>
+        </member>
+        <member name="M:DataRabbit.IParameterFormatter.FormatFiledSafely(System.String)">
+            <summary>
+            FormatFiledSafely 将SQL语句中的字段名转化为安全的形式，防止与数据库的关键字同名的field引发冲突
+            </summary>        
+        </member>
+        <member name="P:DataRabbit.IParameterFormatter.ParameterPrefix">
+            <summary>
+            ParameterPrefix sql参数的前缀，如SqlServer采用"@"，Oracle采用":"等。
+            </summary>
+        </member>
+        <member name="T:DataRabbit.BaseEntityAccesser`1">
+            <summary>
+            BaseEntityAccesser 用于实现IEntityAccesser接口中的大量重载方法，只将最核心的少数方法留给派生类实现。
+            zhuweisky 2009.07.25
+            </summary>   
+        </member>
+        <member name="T:DataRabbit.Application.Log.SecurityOperation">
+            <summary>
+            用于记录安全操作的数据表所对应的Entity定义。
+            对应的Sql语句为：
+            CREATE TABLE [SecurityOperation]
+            ([AutoID] [int] IDENTITY(1,1) NOT FOR REPLICATION NOT NULL, [ApplicationID] [varchar](10) NOT NULL, [UserID] [nvarchar](20) NOT NULL,
+            [Source] [nvarchar](20) NOT NULL,[TaskType] [nvarchar](20) NOT NULL,[Comment] [nvarchar](100) NOT NULL,
+            [OccureTime] [datetime] NOT NULL 
+            CONSTRAINT [PK_SecurityOperation] PRIMARY KEY CLUSTERED ([AutoID] ASC))
+            </summary>
+        </member>
+        <member name="P:DataRabbit.Application.Log.SecurityOperation.ApplicationID">
+            <summary>
+            出现异常的应用程序的标志。
+            </summary>
+        </member>
+        <member name="P:DataRabbit.Application.Log.SecurityOperation.UserID">
+            <summary>
+            进行安全操作的用户编号
+            </summary>
+        </member>
+        <member name="P:DataRabbit.Application.Log.SecurityOperation.Source">
+            <summary>
+            来源（比如用户的IP）
+            </summary>
+        </member>
+        <member name="P:DataRabbit.Application.Log.SecurityOperation.TaskType">
+            <summary>
+            安全操作的类型
+            </summary>
+        </member>
+        <member name="P:DataRabbit.Application.Log.SecurityOperation.Comment">
+            <summary>
+            备注
+            </summary>
+        </member>
+        <member name="P:DataRabbit.Application.Log.SecurityOperation.OccureTime">
+            <summary>
+            操作发生的时间。
+            </summary>
+        </member>
+        <!-- 对于成员“T:DataRabbit.AgileGroupFilterTree”忽略有格式错误的 XML 注释 -->
+        <!-- 对于成员“M:DataRabbit.AgileGroupFilterTree.#ctor(System.Collections.Generic.IDictionary{System.String,DataRabbit.GroupFilter},System.String)”忽略有格式错误的 XML 注释 -->
+        <member name="T:DataRabbit.Comparison4OrderbyCreator`1">
+            <summary>
+            Comparison4OrderbyCreator 创建用于Entity对象排序的比较算子，并缓存。
+            zhuweisky 2010.01.31
+            </summary>    
+        </member>
+    </members>
+</doc>

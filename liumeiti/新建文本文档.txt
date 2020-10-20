@@ -1,0 +1,12 @@
+ffmpeg -rtsp_transport tcp -re -i "rtsp://admin:admin123@192.168.1.33:554/H.264/ch1/main/av_stream" -vcodec libx264 -preset ultrafast -acodec aac -f flv  rtmp://127.1.1.1:1935/live
+
+
+
+
+
+ffmpeg -re 每s 352*278 -i "E:/anzhuang.mp4" -vcodec libx264 -preset ultrafast -acodec aac -f flv  rtmp://127.1.1.1:1935/live/b
+
+ffmpeg 每i "E:/anzhuang.mp4"每vcodec libx264 每bf 0 每g 25 每s 352*278 每an 每f flv  rtmp://127.1.1.1:1935/live/b
+
+ffmpeg -re -i "E:/anzhuang.mp4" -vcodec libx264 -bf 0 -g 25 -b:v 20k -s 352*278  -an -f flv  rtmp://127.1.1
+.1:1935/live/b

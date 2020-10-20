@@ -1,0 +1,13 @@
+E:\studio\study\vlcPlayer\VLCPlayer\bin\x86\Debug\VLCPlayer.exe.config
+E:\studio\study\vlcPlayer\VLCPlayer\bin\x86\Debug\VLCPlayer.exe
+E:\studio\study\vlcPlayer\VLCPlayer\bin\x86\Debug\VLCPlayer.pdb
+E:\studio\study\vlcPlayer\VLCPlayer\bin\x86\Debug\Vlc.DotNet.Core.dll
+E:\studio\study\vlcPlayer\VLCPlayer\bin\x86\Debug\Vlc.DotNet.Core.Interops.dll
+E:\studio\study\vlcPlayer\VLCPlayer\bin\x86\Debug\Vlc.DotNet.Forms.dll
+E:\studio\study\vlcPlayer\VLCPlayer\obj\x86\Debug\VLCPlayer.Form1.resources
+E:\studio\study\vlcPlayer\VLCPlayer\obj\x86\Debug\VLCPlayer.Properties.Resources.resources
+E:\studio\study\vlcPlayer\VLCPlayer\obj\x86\Debug\VLCPlayer.csproj.GenerateResource.cache
+E:\studio\study\vlcPlayer\VLCPlayer\obj\x86\Debug\VLCPlayer.csproj.CoreCompileInputs.cache
+E:\studio\study\vlcPlayer\VLCPlayer\obj\x86\Debug\VLCPlayer.csproj.CopyComplete
+E:\studio\study\vlcPlayer\VLCPlayer\obj\x86\Debug\VLCPlayer.exe
+E:\studio\study\vlcPlayer\VLCPlayer\obj\x86\Debug\VLCPlayer.pdb
